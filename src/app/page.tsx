@@ -24,8 +24,8 @@ export default function HomePage() {
         {/* Hero Section */}
         <section className="relative overflow-hidden">
           {/* Subtle grid background */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff06_1px,transparent_1px),linear-gradient(to_bottom,#ffffff06_1px,transparent_1px)] bg-[size:64px_64px]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff06_1px,transparent_1px),linear-gradient(to_bottom,#ffffff06_1px,transparent_1px)] bg-size-[64px_64px]" />
+          <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-background" />
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-28 sm:pt-32 sm:pb-36 text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neutral-100 dark:bg-neutral-800 text-sm text-neutral-600 dark:text-neutral-400 mb-8 border border-neutral-200 dark:border-neutral-700">
@@ -84,7 +84,7 @@ export default function HomePage() {
                 </div>
                 <div className="p-6 sm:p-8 text-left">
                   <div className="flex items-start gap-3 mb-4">
-                    <div className="w-8 h-8 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-neutral-800 flex items-center justify-center shrink-0">
                       <MessageSquare className="w-4 h-4 text-neutral-400" />
                     </div>
                     <div className="bg-neutral-800 rounded-2xl rounded-tl-sm px-4 py-3 max-w-md">
@@ -299,7 +299,7 @@ export default function HomePage() {
                       className="flex items-start gap-3 text-neutral-700 dark:text-neutral-300"
                     >
                       <svg
-                        className="w-5 h-5 text-neutral-500 flex-shrink-0 mt-0.5"
+                        className="w-5 h-5 text-neutral-500 shrink-0 mt-0.5"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"

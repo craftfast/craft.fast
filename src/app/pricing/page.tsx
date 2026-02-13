@@ -187,7 +187,7 @@ export default function PricingPage() {
                       className="flex items-start gap-3 text-sm text-neutral-700 dark:text-neutral-300"
                     >
                       <svg
-                        className="w-5 h-5 text-neutral-500 flex-shrink-0 mt-0.5"
+                        className="w-5 h-5 text-neutral-500 shrink-0 mt-0.5"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -246,7 +246,7 @@ export default function PricingPage() {
                     className="flex items-start gap-2 text-sm text-neutral-700 dark:text-neutral-300"
                   >
                     <svg
-                      className="w-5 h-5 text-neutral-500 flex-shrink-0 mt-0.5"
+                      className="w-5 h-5 text-neutral-500 shrink-0 mt-0.5"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
