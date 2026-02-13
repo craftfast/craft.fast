@@ -8,6 +8,7 @@ import { APP_URL, DOCS_URL } from "@/lib/constants";
 
 const navLinks = [
   { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
   { label: "Pricing", href: "/pricing" },
   { label: "Docs", href: DOCS_URL, external: true },
   { label: "Support", href: "/support" },
