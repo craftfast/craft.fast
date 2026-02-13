@@ -4,9 +4,9 @@
     "type": "module",
     "private": true,
     "scripts": {
-        "dev": "next dev --turbopack --port 3500",
+        "dev": "next dev --turbopack --port 3000",
         "build": "next build --turbopack",
-        "start": "next start --port 3500",
+        "start": "next start --port 3000",
         "lint": "eslint",
         "lint:fix": "eslint --fix",
         "type-check": "tsc --noEmit"
