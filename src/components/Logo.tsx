@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 
 /**
  * Craft Symbol Icon Component (Squared background)
+ * Used for favicon, chat pages, and compact displays
  */
 export function LogoSymbol({ className = "" }: { className?: string }) {
   return (
@@ -13,6 +14,7 @@ export function LogoSymbol({ className = "" }: { className?: string }) {
       xmlns="http://www.w3.org/2000/svg"
       className={cn("h-6 w-auto shrink-0", className)}
     >
+      {/* Squared Background */}
       <rect
         x="-20"
         y="-20"
@@ -21,6 +23,7 @@ export function LogoSymbol({ className = "" }: { className?: string }) {
         rx="28"
         className="fill-neutral-900 dark:fill-white"
       />
+      {/* Arrow icon */}
       <path
         d="M100 50L0 100C0 100 46.5 74.0609 46.5 50C46.5 25.9391 0 0 0 0L100 50Z"
         className="fill-white dark:fill-neutral-900"
@@ -30,7 +33,112 @@ export function LogoSymbol({ className = "" }: { className?: string }) {
 }
 
 /**
- * Extended Craft Logo Component (craft.fast wordmark)
+ * Craft Icon Component (Circular background)
+ * Used for chat pages and compact displays
+ */
+export function LogoIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      width="140"
+      height="140"
+      viewBox="-20 -20 140 140"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cn("h-6 w-auto shrink-0", className)}
+    >
+      {/* Circular Background */}
+      <rect
+        x="-20"
+        y="-20"
+        width="140"
+        height="140"
+        rx="70"
+        className="fill-neutral-900 dark:fill-white"
+      />
+      {/* Arrow icon */}
+      <path
+        d="M100 50L0 100C0 100 46.5 74.0609 46.5 50C46.5 25.9391 0 0 0 0L100 50Z"
+        className="fill-white dark:fill-neutral-900"
+      />
+    </svg>
+  );
+}
+
+/**
+ * Full Craft Logo Component (craft)
+ * Used for home, dashboard, pricing, and all pages except chat
+ */
+export function LogoFull({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      width="308"
+      height="101"
+      viewBox="0 0 308 101"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cn("h-5 w-auto shrink-0", className)}
+    >
+      <path
+        d="M283.433 77.5903C283.348 78.1023 283.305 78.7849 283.305 79.6383C283.305 81.3449 283.774 82.5823 284.713 83.3503C285.737 84.0329 287.401 84.3743 289.705 84.3743H298.153L295.465 99.4783H284.073C271.273 99.4783 264.873 94.1449 264.873 83.4783C264.873 81.4303 265.044 79.4249 265.385 77.4623L271.401 43.2863H262.953L265.513 28.5663H274.089L277.161 11.0303H295.209L292.137 28.5663H307.881L305.321 43.2863H289.449L283.433 77.5903Z"
+        className="fill-neutral-900 dark:fill-white"
+      />
+      <path
+        d="M229.708 24.9826C231.244 16.2786 234.828 9.87859 240.46 5.78258C246.092 1.68658 253.857 -0.233413 263.756 0.0225886L261.196 15.1266C256.929 15.0413 253.772 15.7666 251.724 17.3026C249.676 18.8386 248.311 21.6119 247.628 25.6226L247.116 28.5666H259.532L256.972 43.2866H244.556L234.572 99.4786H216.524L226.508 43.2866H218.316L220.876 28.5666H229.068L229.708 24.9826Z"
+        className="fill-neutral-900 dark:fill-white"
+      />
+      <path
+        d="M129.518 63.7665C130.798 56.5985 133.315 50.2412 137.07 44.6945C140.91 39.1479 145.561 34.8812 151.022 31.8946C156.483 28.9079 162.243 27.4146 168.302 27.4146C173.593 27.4146 178.03 28.4812 181.614 30.6145C185.283 32.7479 187.971 35.4359 189.678 38.6786L191.47 28.5666H209.518L196.974 99.4786H178.926L180.846 89.1106C178.03 92.4386 174.361 95.2119 169.838 97.4305C165.401 99.5639 160.537 100.631 155.246 100.631C150.041 100.631 145.433 99.4786 141.422 97.1746C137.411 94.7852 134.297 91.4572 132.078 87.1906C129.859 82.8386 128.75 77.8039 128.75 72.0866C128.75 69.4412 129.006 66.6679 129.518 63.7665ZM185.198 64.0226C185.539 61.8039 185.71 60.1825 185.71 59.1585C185.71 54.1239 184.217 50.1986 181.23 47.3826C178.329 44.5666 174.659 43.1585 170.222 43.1585C166.894 43.1585 163.651 43.9692 160.494 45.5906C157.422 47.2119 154.734 49.6012 152.43 52.7586C150.126 55.8306 148.59 59.4999 147.822 63.7665C147.566 65.3879 147.438 66.9239 147.438 68.3745C147.438 73.4946 148.889 77.5479 151.79 80.5346C154.691 83.4359 158.361 84.8866 162.798 84.8866C166.126 84.8866 169.369 84.0759 172.526 82.4546C175.683 80.7479 178.371 78.3159 180.59 75.1586C182.894 72.0012 184.43 68.2892 185.198 64.0226Z"
+        className="fill-neutral-900 dark:fill-white"
+      />
+      <path
+        d="M104.392 41.1105C107.464 36.8438 111.048 33.5158 115.144 31.1265C119.24 28.7371 123.677 27.5425 128.456 27.5425L125.128 46.3585H120.392C115.101 46.3585 110.835 47.5105 107.592 49.8145C104.435 52.1185 102.131 56.0438 100.68 61.5905L94.0241 99.4785H75.9761L88.5201 28.5665H106.568L104.392 41.1105Z"
+        className="fill-neutral-900 dark:fill-white"
+      />
+      <path
+        d="M0.768 64.0226C2.048 56.6839 4.65067 50.2839 8.576 44.8225C12.5013 39.2759 17.3653 35.0092 23.168 32.0226C29.056 28.9506 35.4133 27.4146 42.24 27.4146C51.0293 27.4146 57.8987 29.5906 62.848 33.9426C67.8827 38.2946 70.6987 44.4812 71.296 52.5026H51.968C51.456 49.4306 50.1333 47.0412 48 45.3346C45.8667 43.5426 43.008 42.6466 39.424 42.6466C34.304 42.6466 29.9093 44.5239 26.24 48.2786C22.656 51.9479 20.2667 57.1959 19.072 64.0226C18.6453 66.4119 18.432 68.4599 18.432 70.1665C18.432 75.0306 19.6267 78.7852 22.016 81.4305C24.4053 83.9905 27.7733 85.2706 32 85.2706C39.168 85.2706 44.4587 82.0279 47.872 75.5425H67.2C63.872 83.2225 58.88 89.3239 52.224 93.8465C45.6533 98.3692 38.0587 100.631 29.44 100.631C20.48 100.631 13.312 98.1132 7.936 93.0786C2.64533 87.9586 0 81.0466 0 72.3426C0 69.6972 0.256 66.9239 0.768 64.0226Z"
+        className="fill-neutral-900 dark:fill-white"
+      />
+    </svg>
+  );
+}
+
+/**
+ * Logo with Icon + Text (Symbol + "Craft")
+ * Used for branded headers combining the arrow icon with wordmark
+ */
+export function LogoWithText({ className = "" }: { className?: string }) {
+  return (
+    <div className={cn("inline-flex items-center gap-1 h-5", className)}>
+      {/* Arrow symbol with squared background */}
+      <LogoSymbol className="h-full w-auto" />
+      {/* "Craft" text */}
+      <LogoFull className="h-full w-auto" />
+    </div>
+  );
+}
+
+/**
+ * Logo with Icon + Extended Text (Symbol + "Craft.fast")
+ * Used for branded headers combining the arrow icon with full wordmark
+ */
+export function LogoWithTextExtended({
+  className = "",
+}: {
+  className?: string;
+}) {
+  return (
+    <div className={cn("inline-flex items-center gap-1 h-5", className)}>
+      {/* Arrow symbol with squared background */}
+      <LogoSymbol className="h-full w-auto" />
+      {/* "Craft.fast" text */}
+      <LogoExtended className="h-full w-auto" />
+    </div>
+  );
+}
+
+/**
+ * Extended Craft Logo Component (craft.fast)
+ * Full name with .fast extension
  */
 export function LogoExtended({ className = "" }: { className?: string }) {
   return (
@@ -84,4 +192,58 @@ export function LogoExtended({ className = "" }: { className?: string }) {
       />
     </svg>
   );
+}
+
+interface LogoProps {
+  variant?:
+    | "full"
+    | "extended"
+    | "icon"
+    | "symbol"
+    | "with-text"
+    | "with-text-extended";
+  className?: string;
+  href?: string;
+}
+
+/**
+ * Craft Logo Component
+ * - Use variant="full" for "craft" wordmark (default)
+ * - Use variant="extended" for "craft.fast" full name
+ * - Use variant="icon" for arrow icon
+ * - Use variant="symbol" for just the arrow symbol (alias for icon)
+ * - Use variant="with-text" for icon + "Craft" text side by side
+ * - Use variant="with-text-extended" for icon + "Craft.fast" text side by side
+ */
+export default function Logo({
+  variant = "full",
+  className = "",
+  href,
+}: LogoProps) {
+  const logoContent =
+    variant === "symbol" ? (
+      <LogoSymbol className={className} />
+    ) : variant === "icon" ? (
+      <LogoIcon className={className} />
+    ) : variant === "with-text" ? (
+      <LogoWithText className={className} />
+    ) : variant === "with-text-extended" ? (
+      <LogoWithTextExtended className={className} />
+    ) : variant === "extended" ? (
+      <LogoExtended className={className} />
+    ) : (
+      <LogoFull className={className} />
+    );
+
+  // If href is provided, wrap in Link
+  if (href) {
+    return (
+      <>
+        {logoContent}
+        {/* Logo without Link for www app — uses Next.js Link in parent */}
+      </>
+    );
+  }
+
+  return logoContent;
 }
