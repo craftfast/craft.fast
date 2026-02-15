@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import Link from "next/link";
-import { APP_URL } from "@/lib/constants";
+import { ACCOUNTS_URL } from "@/lib/constants";
 
 export const metadata = {
   title: "Pricing - Craft",
@@ -205,7 +205,7 @@ export default function PricingPage() {
                 </ul>
 
                 <Link
-                  href={`${APP_URL}/signup`}
+                  href={`${ACCOUNTS_URL}/signup`}
                   className={`w-full py-3 px-6 text-center font-medium rounded-full transition-colors ${
                     plan.popular
                       ? "bg-foreground text-background hover:bg-neutral-800 dark:hover:bg-neutral-200"
@@ -425,7 +425,7 @@ export default function PricingPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
-                href={`${APP_URL}/signup`}
+                href={`${ACCOUNTS_URL}/signup`}
                 className="px-8 py-3 bg-foreground text-background hover:bg-neutral-800 dark:hover:bg-neutral-200 rounded-full font-medium transition-colors"
               >
                 Start Building

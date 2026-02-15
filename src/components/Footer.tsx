@@ -51,12 +51,12 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a
-                  href={`${DOCS_URL}/blog`}
+                <Link
+                  href="/blog"
                   className="text-neutral-500 hover:text-foreground transition-colors"
                 >
                   Blog
-                </a>
+                </Link>
               </li>
               <li>
                 <Link

@@ -2,7 +2,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
-import { EMAILS, LINKS } from "@/lib/constants";
+import { EMAILS, LINKS, ACCOUNTS_URL } from "@/lib/constants";
 
 export const metadata = {
   title: "About - Craft",
@@ -619,12 +619,12 @@ export default function AboutPage() {
                 life. Start for free and upgrade when you&apos;re ready.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/auth/signup"
+                <a
+                  href={`${ACCOUNTS_URL}/signup`}
                   className="px-8 py-3 bg-neutral-900 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-200 rounded-full transition-colors duration-200 font-medium"
                 >
                   Get Started Free
-                </Link>
+                </a>
                 <Link
                   href="/pricing"
                   className="px-8 py-3 bg-transparent border border-neutral-300 dark:border-neutral-700 text-foreground hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-full transition-colors duration-200 font-medium"

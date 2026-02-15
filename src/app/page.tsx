@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { APP_URL, DOCS_URL, LINKS } from "@/lib/constants";
+import { APP_URL, ACCOUNTS_URL, DOCS_URL, LINKS } from "@/lib/constants";
 import {
   ArrowRight,
   Zap,
@@ -53,7 +53,7 @@ export default function HomePage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
               <a
-                href={`${APP_URL}/sign-up`}
+                href={`${ACCOUNTS_URL}/signup`}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-medium bg-foreground text-background rounded-full hover:opacity-90 transition-all shadow-lg shadow-neutral-900/10 dark:shadow-neutral-100/5"
               >
                 Start Building Free
@@ -407,7 +407,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href={`${APP_URL}/sign-up`}
+                href={`${ACCOUNTS_URL}/signup`}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-medium bg-foreground text-background rounded-full hover:opacity-90 transition-all shadow-lg shadow-neutral-900/10 dark:shadow-neutral-100/5"
               >
                 Get Started Free

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { APP_URL, DOCS_URL } from "@/lib/constants";
+import { APP_URL, ACCOUNTS_URL, DOCS_URL } from "@/lib/constants";
 
 const navLinks = [
   { label: "About", href: "/about" },
@@ -69,13 +69,13 @@ export function Header() {
             {mounted && (
               <>
                 <a
-                  href={`${APP_URL}/sign-in`}
+                  href={`${ACCOUNTS_URL}/signin`}
                   className="hidden sm:inline-flex items-center px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-foreground transition-colors"
                 >
                   Sign in
                 </a>
                 <a
-                  href={`${APP_URL}/sign-up`}
+                  href={`${ACCOUNTS_URL}/signup`}
                   className="hidden sm:inline-flex items-center px-5 py-2 text-sm font-medium bg-foreground text-background rounded-full hover:opacity-90 transition-opacity"
                 >
                   Get Started
@@ -136,13 +136,13 @@ export function Header() {
               );
             })}
             <a
-              href={`${APP_URL}/sign-in`}
+              href={`${ACCOUNTS_URL}/signin`}
               className="block px-3 py-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-foreground transition-colors"
             >
               Sign in
             </a>
             <a
-              href={`${APP_URL}/sign-up`}
+              href={`${ACCOUNTS_URL}/signup`}
               className="block px-3 py-2 text-sm font-medium text-foreground"
             >
               Get Started
