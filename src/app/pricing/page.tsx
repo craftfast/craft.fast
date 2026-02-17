@@ -330,7 +330,7 @@ export default function PricingPage() {
               },
               {
                 title: "File Storage",
-                desc: "Railway object storage at $0.015/GB-mo. API operations & egress free.",
+                desc: "Cloudflare R2 storage at $0.015/GB-mo. API operations & egress free.",
                 icon: (
                   <path
                     strokeLinecap="round"
