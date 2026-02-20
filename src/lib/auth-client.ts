@@ -1,18 +1,16 @@
 /**
  * Client-side auth for marketing website (www)
  *
- * Points to the shared accounts service for session checking.
- * In production, requires cookie domain to be set to `.craft.fast`
- * for cross-subdomain session sharing.
+ * Points to the main app's auth API (Better Auth is served from apps/app).
  */
 
 import { createAuthClient } from "better-auth/react";
 
-const ACCOUNTS_URL =
-    process.env.NEXT_PUBLIC_ACCOUNTS_URL || "http://localhost:3003";
+const APP_URL =
+    process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
 export const authClient = createAuthClient({
-    baseURL: ACCOUNTS_URL,
+    baseURL: APP_URL,
     fetchOptions: {
         credentials: "include",
     },

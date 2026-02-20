@@ -30,8 +30,8 @@ export const EMAILS = {
 
 /** Base URL for the main app */
 export const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://app.craft.fast";
-/** Base URL for the accounts service (auth + billing) */
-export const ACCOUNTS_URL = process.env.NEXT_PUBLIC_ACCOUNTS_URL || "https://accounts.craft.fast";
+/** Base URL for the accounts service (auth + billing) - now part of main app */
+export const ACCOUNTS_URL = process.env.NEXT_PUBLIC_APP_URL || "https://app.craft.fast";
 /** Base URL for the docs site */
 export const DOCS_URL = process.env.NEXT_PUBLIC_DOCS_URL || "https://docs.craft.fast";
 /** Base URL for the marketing website */
