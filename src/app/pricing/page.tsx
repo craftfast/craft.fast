@@ -15,8 +15,12 @@ const EXTERNAL_LINKS = {
   openai: "https://platform.openai.com/docs/pricing",
   google: "https://ai.google.dev/gemini-api/docs/pricing",
   xai: "https://docs.x.ai/docs/models",
-  vercelSandbox: "https://vercel.com/docs/vercel-sandbox/pricing",
+  e2b: "https://e2b.dev/pricing",
   neon: "https://neon.tech/pricing",
+  cloudflareR2: "https://developers.cloudflare.com/r2/pricing/",
+  upstash: "https://upstash.com/pricing",
+  resend: "https://resend.com/pricing",
+  vercelAIGateway: "https://vercel.com/ai-gateway",
   vercel: "https://vercel.com/pricing",
   dodopayments: "https://dodopayments.com",
 };
@@ -169,7 +173,7 @@ const aiModels = [
 const faqs = [
   {
     q: "How does the pricing work?",
-    a: "We charge a 10% flat platform fee when you purchase credits or subscribe. After that, all provider services (AI models, Vercel Sandbox, Neon database, Vercel deployment) are billed at exact cost with zero markup.",
+    a: "We charge a 10% flat platform fee when you purchase credits or subscribe. After that, all provider services (AI models, E2B sandboxes, Neon database, Cloudflare R2 storage, Upstash Redis, Resend email, Vercel deployment) are billed at exact cost with zero markup.",
   },
   {
     q: "What is included in the 10% platform fee?",

@@ -38,8 +38,12 @@ interface ExternalLinks {
   openai: string;
   google: string;
   xai: string;
-  vercelSandbox: string;
+  e2b: string;
   neon: string;
+  cloudflareR2: string;
+  upstash: string;
+  resend: string;
+  vercelAIGateway: string;
   vercel: string;
   dodopayments: string;
 }
@@ -294,7 +298,34 @@ export function PricingContent({
               AI Model Costs
             </h2>
             <p className="text-neutral-600 dark:text-neutral-400">
-              Zero markup on all AI providers. You pay exact provider rates.
+              Zero markup on all AI providers. You pay exact provider rates from{" "}
+              <a
+                href={externalLinks.anthropic}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-foreground"
+              >
+                Anthropic
+              </a>
+              ,{" "}
+              <a
+                href={externalLinks.openai}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-foreground"
+              >
+                OpenAI
+              </a>
+              , and{" "}
+              <a
+                href={externalLinks.google}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-foreground"
+              >
+                Google
+              </a>
+              .
             </p>
           </div>
           <span className="text-sm text-neutral-500 hidden sm:block">
@@ -403,12 +434,25 @@ export function PricingContent({
         </div>
       </section>
 
-      {/* Sandbox Pricing Table */}
+      {/* Sandbox Pricing Table — E2B */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-foreground">Sandbox</h2>
+          <div>
+            <h2 className="text-2xl font-bold text-foreground">Sandboxes</h2>
+            <p className="text-sm text-neutral-500 mt-1">
+              Powered by{" "}
+              <a
+                href={externalLinks.e2b}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-foreground transition-colors"
+              >
+                E2B
+              </a>
+            </p>
+          </div>
           <a
-            href={externalLinks.vercelSandbox}
+            href={externalLinks.e2b}
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-neutral-500 hover:text-foreground flex items-center gap-1"
@@ -433,61 +477,70 @@ export function PricingContent({
             <tbody className="divide-y divide-neutral-200 dark:divide-neutral-700">
               <tr className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
                 <td className="px-4 py-3 text-sm text-foreground">
-                  Active CPU
+                  Per vCPU per second
                 </td>
                 <td className="px-4 py-3 text-sm font-mono text-foreground text-right">
-                  $0.128/hour
+                  $0.000014/s
                 </td>
               </tr>
               <tr className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
                 <td className="px-4 py-3 text-sm text-foreground">
-                  Provisioned Memory
+                  Default sandbox (2 vCPU)
                 </td>
                 <td className="px-4 py-3 text-sm font-mono text-foreground text-right">
-                  $0.0106/GB-hr
-                </td>
-              </tr>
-              <tr className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
-                <td className="px-4 py-3 text-sm text-foreground">Creation</td>
-                <td className="px-4 py-3 text-sm font-mono text-foreground text-right">
-                  $0.60/1M
+                  $0.10/hour
                 </td>
               </tr>
               <tr className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
-                <td className="px-4 py-3 text-sm text-foreground">Network</td>
+                <td className="px-4 py-3 text-sm text-foreground">
+                  30-minute session (2 vCPU)
+                </td>
                 <td className="px-4 py-3 text-sm font-mono text-foreground text-right">
-                  $0.15/GB
+                  ~$0.05
                 </td>
               </tr>
               <tr className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
                 <td className="px-4 py-3 text-sm text-neutral-600 dark:text-neutral-400">
-                  Concurrent Sandboxes
+                  Paused sandboxes
                 </td>
                 <td className="px-4 py-3 text-sm text-neutral-600 dark:text-neutral-400 text-right">
-                  1 per user
+                  Free
                 </td>
               </tr>
               <tr className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
                 <td className="px-4 py-3 text-sm text-neutral-600 dark:text-neutral-400">
-                  Auto-pause when idle
+                  Concurrent sandboxes
                 </td>
                 <td className="px-4 py-3 text-sm text-neutral-600 dark:text-neutral-400 text-right">
-                  After 5 minutes
+                  1–5 per plan
                 </td>
               </tr>
             </tbody>
           </table>
           <div className="px-4 py-3 bg-neutral-50 dark:bg-neutral-800/30 border-t border-neutral-200 dark:border-neutral-700 text-xs text-neutral-500">
-            Live development environments with instant preview. Auto-pauses when
-            idle to minimize costs.
+            Cloud development environments via E2B. Charged per second of
+            running time. Paused sandboxes cost nothing.
           </div>
         </div>
       </section>
 
-      {/* Database Pricing Table */}
+      {/* Database Pricing Table — Neon */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-foreground">Database</h2>
+          <div>
+            <h2 className="text-2xl font-bold text-foreground">Database</h2>
+            <p className="text-sm text-neutral-500 mt-1">
+              Powered by{" "}
+              <a
+                href={externalLinks.neon}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-foreground transition-colors"
+              >
+                Neon
+              </a>
+            </p>
+          </div>
           <a
             href={externalLinks.neon}
             target="_blank"
@@ -565,10 +618,23 @@ export function PricingContent({
         </div>
       </section>
 
-      {/* Deployment Pricing Table */}
+      {/* Deployment Pricing Table — Vercel */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-foreground">Deployment</h2>
+          <div>
+            <h2 className="text-2xl font-bold text-foreground">Deployment</h2>
+            <p className="text-sm text-neutral-500 mt-1">
+              Powered by{" "}
+              <a
+                href={externalLinks.vercel}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-foreground transition-colors"
+              >
+                Vercel
+              </a>
+            </p>
+          </div>
           <a
             href={externalLinks.vercel}
             target="_blank"
@@ -712,6 +778,314 @@ export function PricingContent({
           <div className="px-4 py-3 bg-neutral-50 dark:bg-neutral-800/30 border-t border-neutral-200 dark:border-neutral-700 text-xs text-neutral-500">
             Production hosting via Vercel. Automatic CI/CD, preview URLs, custom
             domains, and edge hosting included.
+          </div>
+        </div>
+      </section>
+
+      {/* Storage Pricing Table — Cloudflare R2 */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h2 className="text-2xl font-bold text-foreground">Storage</h2>
+            <p className="text-sm text-neutral-500 mt-1">
+              Powered by{" "}
+              <a
+                href={externalLinks.cloudflareR2}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-foreground transition-colors"
+              >
+                Cloudflare R2
+              </a>
+            </p>
+          </div>
+          <a
+            href={externalLinks.cloudflareR2}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-neutral-500 hover:text-foreground flex items-center gap-1"
+          >
+            Provider pricing
+            <ExternalLinkIcon />
+          </a>
+        </div>
+
+        <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-xl overflow-hidden">
+          <table className="w-full">
+            <thead>
+              <tr className="bg-neutral-50 dark:bg-neutral-800/50 border-b border-neutral-200 dark:border-neutral-700">
+                <th className="px-4 py-3 text-left text-sm font-semibold text-foreground">
+                  Resource
+                </th>
+                <th className="px-4 py-3 text-right text-sm font-semibold text-foreground">
+                  Cost
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-neutral-200 dark:divide-neutral-700">
+              <tr className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
+                <td className="px-4 py-3 text-sm text-foreground">Storage</td>
+                <td className="px-4 py-3 text-sm font-mono text-foreground text-right">
+                  $0.015/GB-month
+                </td>
+              </tr>
+              <tr className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
+                <td className="px-4 py-3 text-sm text-foreground">
+                  Class A operations (writes)
+                </td>
+                <td className="px-4 py-3 text-sm font-mono text-foreground text-right">
+                  $4.50/1M
+                </td>
+              </tr>
+              <tr className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
+                <td className="px-4 py-3 text-sm text-foreground">
+                  Class B operations (reads)
+                </td>
+                <td className="px-4 py-3 text-sm font-mono text-foreground text-right">
+                  $0.36/1M
+                </td>
+              </tr>
+              <tr className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
+                <td className="px-4 py-3 text-sm text-neutral-600 dark:text-neutral-400">
+                  Egress
+                </td>
+                <td className="px-4 py-3 text-sm text-neutral-600 dark:text-neutral-400 text-right">
+                  Free
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div className="px-4 py-3 bg-neutral-50 dark:bg-neutral-800/30 border-t border-neutral-200 dark:border-neutral-700 text-xs text-neutral-500">
+            Object storage for project assets, uploads, and static files. Zero
+            egress fees.
+          </div>
+        </div>
+      </section>
+
+      {/* Redis Pricing Table — Upstash */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h2 className="text-2xl font-bold text-foreground">Redis</h2>
+            <p className="text-sm text-neutral-500 mt-1">
+              Powered by{" "}
+              <a
+                href={externalLinks.upstash}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-foreground transition-colors"
+              >
+                Upstash
+              </a>
+            </p>
+          </div>
+          <a
+            href={externalLinks.upstash}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-neutral-500 hover:text-foreground flex items-center gap-1"
+          >
+            Provider pricing
+            <ExternalLinkIcon />
+          </a>
+        </div>
+
+        <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-xl overflow-hidden">
+          <table className="w-full">
+            <thead>
+              <tr className="bg-neutral-50 dark:bg-neutral-800/50 border-b border-neutral-200 dark:border-neutral-700">
+                <th className="px-4 py-3 text-left text-sm font-semibold text-foreground">
+                  Resource
+                </th>
+                <th className="px-4 py-3 text-right text-sm font-semibold text-foreground">
+                  Cost
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-neutral-200 dark:divide-neutral-700">
+              <tr className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
+                <td className="px-4 py-3 text-sm text-foreground">
+                  Database (per month)
+                </td>
+                <td className="px-4 py-3 text-sm font-mono text-foreground text-right">
+                  $0.50/mo
+                </td>
+              </tr>
+              <tr className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
+                <td className="px-4 py-3 text-sm text-foreground">Commands</td>
+                <td className="px-4 py-3 text-sm font-mono text-foreground text-right">
+                  $0.20/100K
+                </td>
+              </tr>
+              <tr className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
+                <td className="px-4 py-3 text-sm text-foreground">Storage</td>
+                <td className="px-4 py-3 text-sm font-mono text-foreground text-right">
+                  $0.25/GB-month
+                </td>
+              </tr>
+              <tr className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
+                <td className="px-4 py-3 text-sm text-neutral-600 dark:text-neutral-400">
+                  Bandwidth
+                </td>
+                <td className="px-4 py-3 text-sm text-neutral-600 dark:text-neutral-400 text-right">
+                  Unlimited (free)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div className="px-4 py-3 bg-neutral-50 dark:bg-neutral-800/30 border-t border-neutral-200 dark:border-neutral-700 text-xs text-neutral-500">
+            Serverless Redis for caching, rate limiting, and session management
+            in your apps.
+          </div>
+        </div>
+      </section>
+
+      {/* Email Pricing Table — Resend */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h2 className="text-2xl font-bold text-foreground">Email</h2>
+            <p className="text-sm text-neutral-500 mt-1">
+              Powered by{" "}
+              <a
+                href={externalLinks.resend}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-foreground transition-colors"
+              >
+                Resend
+              </a>
+            </p>
+          </div>
+          <a
+            href={externalLinks.resend}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-neutral-500 hover:text-foreground flex items-center gap-1"
+          >
+            Provider pricing
+            <ExternalLinkIcon />
+          </a>
+        </div>
+
+        <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-xl overflow-hidden">
+          <table className="w-full">
+            <thead>
+              <tr className="bg-neutral-50 dark:bg-neutral-800/50 border-b border-neutral-200 dark:border-neutral-700">
+                <th className="px-4 py-3 text-left text-sm font-semibold text-foreground">
+                  Resource
+                </th>
+                <th className="px-4 py-3 text-right text-sm font-semibold text-foreground">
+                  Cost
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-neutral-200 dark:divide-neutral-700">
+              <tr className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
+                <td className="px-4 py-3 text-sm text-foreground">
+                  Per email sent
+                </td>
+                <td className="px-4 py-3 text-sm font-mono text-foreground text-right">
+                  $0.00055
+                </td>
+              </tr>
+              <tr className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
+                <td className="px-4 py-3 text-sm text-foreground">
+                  Custom domain add-on
+                </td>
+                <td className="px-4 py-3 text-sm font-mono text-foreground text-right">
+                  $2.00/mo
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div className="px-4 py-3 bg-neutral-50 dark:bg-neutral-800/30 border-t border-neutral-200 dark:border-neutral-700 text-xs text-neutral-500">
+            Transactional email for your apps. Shared domain included, custom
+            domain available as add-on.
+          </div>
+        </div>
+      </section>
+
+      {/* AI Gateway Pricing — Vercel AI Gateway */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h2 className="text-2xl font-bold text-foreground">AI Gateway</h2>
+            <p className="text-sm text-neutral-500 mt-1">
+              Powered by{" "}
+              <a
+                href={externalLinks.vercelAIGateway}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-foreground transition-colors"
+              >
+                Vercel AI Gateway
+              </a>{" "}
+              — for apps built by users
+            </p>
+          </div>
+          <a
+            href={externalLinks.vercelAIGateway}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-neutral-500 hover:text-foreground flex items-center gap-1"
+          >
+            Provider pricing
+            <ExternalLinkIcon />
+          </a>
+        </div>
+
+        <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-xl overflow-hidden">
+          <div className="px-4 py-4 border-b border-neutral-200 dark:border-neutral-700">
+            <p className="text-sm text-neutral-600 dark:text-neutral-400">
+              When users build apps with AI features, Craft routes all model
+              calls through the Vercel AI Gateway. This provides a unified API
+              across providers with zero markup — you pay exact provider token
+              costs. Supports models from OpenAI, Anthropic, Google, xAI, Meta,
+              Mistral, DeepSeek, and more.
+            </p>
+          </div>
+          <table className="w-full">
+            <thead>
+              <tr className="bg-neutral-50 dark:bg-neutral-800/50 border-b border-neutral-200 dark:border-neutral-700">
+                <th className="px-4 py-3 text-left text-sm font-semibold text-foreground">
+                  Resource
+                </th>
+                <th className="px-4 py-3 text-right text-sm font-semibold text-foreground">
+                  Cost
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-neutral-200 dark:divide-neutral-700">
+              <tr className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
+                <td className="px-4 py-3 text-sm text-foreground">
+                  Gateway markup
+                </td>
+                <td className="px-4 py-3 text-sm font-mono text-foreground text-right">
+                  None (0%)
+                </td>
+              </tr>
+              <tr className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
+                <td className="px-4 py-3 text-sm text-foreground">
+                  Token pricing
+                </td>
+                <td className="px-4 py-3 text-sm text-foreground text-right">
+                  Exact provider rates
+                </td>
+              </tr>
+              <tr className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
+                <td className="px-4 py-3 text-sm text-neutral-600 dark:text-neutral-400">
+                  Supported providers
+                </td>
+                <td className="px-4 py-3 text-sm text-neutral-600 dark:text-neutral-400 text-right">
+                  OpenAI, Anthropic, Google, xAI, Meta, Mistral, DeepSeek
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div className="px-4 py-3 bg-neutral-50 dark:bg-neutral-800/30 border-t border-neutral-200 dark:border-neutral-700 text-xs text-neutral-500">
+            AI proxy for user-generated apps. Unified API, automatic fallbacks,
+            and usage tracking. Charged at exact provider token costs.
           </div>
         </div>
       </section>

@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { APP_URL, ACCOUNTS_URL, DOCS_URL } from "@/lib/constants";
 import { useSession, signOut } from "@/lib/auth-client";
 import { LogoSymbol, LogoExtended } from "@/components/Logo";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const navLinks = [
   { label: "About", href: "/about" },
@@ -94,6 +95,7 @@ export function Header() {
 
           {/* Right Side */}
           <div className="flex items-center gap-3 ml-auto">
+            <ThemeToggle />
             {mounted && (
               <>
                 {isPending ? (
