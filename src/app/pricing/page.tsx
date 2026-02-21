@@ -25,16 +25,17 @@ const EXTERNAL_LINKS = {
   dodopayments: "https://dodopayments.com",
 };
 
-// Plan definitions matching the DB schema
+// Plan definitions matching the DB schema (DEFAULT_PLANS in apps/app/src/lib/plans/constants.ts)
+// Annual = 12x monthly (no discount). No platform fee on subscriptions — credits = full price.
 const plans = [
   {
     name: "Hobby",
     id: "hobby",
-    description: "Perfect for side projects and learning",
+    description: "Perfect for learning and side projects",
     monthlyPrice: 10,
-    annualPrice: 120,
-    monthlyCredits: 9,
-    annualCredits: 108,
+    annualPrice: 120, // 12 x $10
+    monthlyCredits: 10, // full price
+    annualCredits: 120, // full price
     features: [
       "10 projects",
       "1 concurrent sandbox",
@@ -47,36 +48,36 @@ const plans = [
   {
     name: "Pro",
     id: "pro",
-    description: "For professionals and growing teams",
+    description: "For professional developers",
     monthlyPrice: 50,
-    annualPrice: 600,
-    monthlyCredits: 45,
-    annualCredits: 540,
+    annualPrice: 600, // 12 x $50
+    monthlyCredits: 50, // full price
+    annualCredits: 600, // full price
     features: [
       "Unlimited projects",
       "3 concurrent sandboxes",
       "Lite + Premium AI models",
       "30-day git history",
       "Memory & context",
-      "Priority support",
+      "Priority email support",
     ],
     popular: true,
   },
   {
     name: "Max",
     id: "max",
-    description: "For power users who need more",
+    description: "Maximum power for heavy users",
     monthlyPrice: 100,
-    annualPrice: 1200,
-    monthlyCredits: 90,
-    annualCredits: 1080,
+    annualPrice: 1200, // 12 x $100
+    monthlyCredits: 100, // full price
+    annualCredits: 1200, // full price
     features: [
       "Unlimited projects",
       "5 concurrent sandboxes",
       "Lite + Premium AI models",
       "90-day git history",
       "Memory & context",
-      "Priority support",
+      "Priority email support",
       "Early access to features",
     ],
     popular: false,
@@ -173,11 +174,11 @@ const aiModels = [
 const faqs = [
   {
     q: "How does the pricing work?",
-    a: "We charge a 10% flat platform fee when you purchase credits or subscribe. After that, all provider services (AI models, E2B sandboxes, Neon database, Cloudflare R2 storage, Upstash Redis, Resend email, Vercel deployment) are billed at exact cost with zero markup.",
+    a: "Subscribe to a plan and get credits equal to your plan price. All provider services (AI models, E2B sandboxes, Neon database, Cloudflare R2 storage, Upstash Redis, Resend email, Vercel deployment) are billed at exact cost with zero markup. A 10% platform fee applies only to credit top-ups.",
   },
   {
-    q: "What is included in the 10% platform fee?",
-    a: "The 10% platform fee covers payment processing, platform infrastructure, support, and ongoing development. This allows us to pass through all provider costs at zero markup.",
+    q: "What about top-up credits?",
+    a: "You can top up your balance anytime. A 10% platform fee applies on top-ups to cover payment processing, platform infrastructure, support, and ongoing development. Subscription credits have no platform fee.",
   },
   {
     q: "Can I switch plans later?",
@@ -193,7 +194,7 @@ const faqs = [
   },
   {
     q: "Is there a free trial?",
-    a: "First-time subscribers get a 10% signup bonus (the platform fee is waived on your first month), giving you extra credits to explore.",
+    a: "We don't offer a free trial, but you can start with the Hobby plan at just $10/month and get full access to explore the platform.",
   },
   {
     q: "What payment methods do you accept?",
