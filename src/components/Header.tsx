@@ -57,15 +57,15 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800">
       <div className="px-4">
-        <div className="flex items-center justify-between h-12">
+        <div className="relative flex items-center h-12">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <LogoSymbol />
             <LogoExtended className="hidden sm:block" />
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          {/* Desktop Nav — absolutely centered */}
+          <nav className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
             {navLinks.map((link) => {
               const isExternal = "external" in link && link.external;
               const isActive = !isExternal && pathname === link.href;
@@ -93,7 +93,7 @@ export function Header() {
           </nav>
 
           {/* Right Side */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 ml-auto">
             {mounted && (
               <>
                 {isPending ? (
@@ -171,25 +171,6 @@ export function Header() {
                               />
                             </svg>
                             Manage account
-                          </a>
-                          <a
-                            href={`${APP_URL}/signin`}
-                            className="w-full px-4 py-2 text-left text-sm text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 flex items-center gap-2"
-                          >
-                            <svg
-                              className="w-4 h-4"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
-                              />
-                            </svg>
-                            Add another account
                           </a>
                           <button
                             onClick={handleSignOut}
