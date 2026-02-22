@@ -8,6 +8,8 @@ import { APP_URL, ACCOUNTS_URL, DOCS_URL } from "@/lib/constants";
 import { useSession, signOut } from "@/lib/auth-client";
 import { LogoSymbol, LogoExtended } from "@/components/Logo";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { ExternalLink, User, LogOut } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { label: "About", href: "/about" },
@@ -56,9 +58,9 @@ export function Header() {
   const user = session?.user;
 
   return (
-    <header className="sticky top-0 z-40 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800">
-      <div className="px-4">
-        <div className="relative flex items-center h-12">
+    <header className="fixed top-0 left-0 right-0 z-40 px-3 sm:px-4 pt-3 sm:pt-4">
+      <div className="max-w-5xl mx-auto bg-white/70 dark:bg-neutral-950/70 backdrop-blur-xl border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl sm:rounded-2xl shadow-lg shadow-neutral-900/5 dark:shadow-black/20 px-3 sm:px-4 md:px-6">
+        <div className="relative flex items-center h-11 sm:h-12">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <LogoSymbol />
@@ -140,57 +142,21 @@ export function Header() {
                             href={APP_URL}
                             className="w-full px-4 py-2 text-left text-sm text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 flex items-center gap-2"
                           >
-                            <svg
-                              className="w-4 h-4"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                              />
-                            </svg>
+                            <ExternalLink className="w-4 h-4" />
                             Open Craft
                           </a>
                           <a
                             href={`${APP_URL}/settings/account`}
                             className="w-full px-4 py-2 text-left text-sm text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 flex items-center gap-2"
                           >
-                            <svg
-                              className="w-4 h-4"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                              />
-                            </svg>
+                            <User className="w-4 h-4" />
                             Manage account
                           </a>
                           <button
                             onClick={handleSignOut}
                             className="w-full px-4 py-2 text-left text-sm text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 flex items-center gap-2"
                           >
-                            <svg
-                              className="w-4 h-4"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                              />
-                            </svg>
+                            <LogOut className="w-4 h-4" />
                             Sign out
                           </button>
                         </div>
@@ -248,71 +214,81 @@ export function Header() {
         </div>
 
         {/* Mobile Nav */}
-        {mobileOpen && (
-          <nav className="md:hidden py-4 border-t border-border space-y-1">
-            {navLinks.map((link) => {
-              const isExternal = "external" in link && link.external;
-              const Component = isExternal ? "a" : Link;
-              const extraProps = isExternal
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {};
-              return (
-                <Component
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="block px-3 py-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-foreground rounded-lg transition-colors"
-                  {...extraProps}
-                >
-                  {link.label}
-                </Component>
-              );
-            })}
-            {isLoggedIn ? (
-              <>
-                <a
-                  href={APP_URL}
-                  className="block px-3 py-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-foreground transition-colors"
-                >
-                  Open Craft
-                </a>
-                <a
-                  href={`${APP_URL}/settings/account`}
-                  className="block px-3 py-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-foreground transition-colors"
-                >
-                  Manage account
-                </a>
-                <a
-                  href={`${APP_URL}/signin`}
-                  className="block px-3 py-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-foreground transition-colors"
-                >
-                  Add another account
-                </a>
-                <button
-                  onClick={handleSignOut}
-                  className="block w-full text-left px-3 py-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-foreground transition-colors"
-                >
-                  Sign out
-                </button>
-              </>
-            ) : (
-              <>
-                <a
-                  href={`${ACCOUNTS_URL}/signin`}
-                  className="block px-3 py-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-foreground transition-colors"
-                >
-                  Sign in
-                </a>
-                <a
-                  href={`${ACCOUNTS_URL}/signup`}
-                  className="block px-3 py-2 text-sm font-medium text-foreground"
-                >
-                  Get Started
-                </a>
-              </>
-            )}
-          </nav>
-        )}
+        <AnimatePresence>
+          {mobileOpen && (
+            <motion.nav
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+              className="md:hidden overflow-hidden border-t border-neutral-200/60 dark:border-neutral-800/60"
+            >
+              <div className="py-4 space-y-1">
+                {navLinks.map((link) => {
+                  const isExternal = "external" in link && link.external;
+                  const Component = isExternal ? "a" : Link;
+                  const extraProps = isExternal
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {};
+                  return (
+                    <Component
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="block px-3 py-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-foreground rounded-lg transition-colors"
+                      {...extraProps}
+                    >
+                      {link.label}
+                    </Component>
+                  );
+                })}
+                {isLoggedIn ? (
+                  <>
+                    <a
+                      href={APP_URL}
+                      className="block px-3 py-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-foreground transition-colors"
+                    >
+                      Open Craft
+                    </a>
+                    <a
+                      href={`${APP_URL}/settings/account`}
+                      className="block px-3 py-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-foreground transition-colors"
+                    >
+                      Manage account
+                    </a>
+                    <a
+                      href={`${APP_URL}/signin`}
+                      className="block px-3 py-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-foreground transition-colors"
+                    >
+                      Add another account
+                    </a>
+                    <button
+                      onClick={handleSignOut}
+                      className="block w-full text-left px-3 py-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-foreground transition-colors"
+                    >
+                      Sign out
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <a
+                      href={`${ACCOUNTS_URL}/signin`}
+                      className="block px-3 py-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-foreground rounded-lg transition-colors"
+                    >
+                      Sign in
+                    </a>
+                    <a
+                      href={`${ACCOUNTS_URL}/signup`}
+                      className="block mx-3 mt-2 px-4 py-2.5 text-sm font-medium text-center bg-foreground text-background rounded-xl hover:opacity-90 transition-opacity"
+                    >
+                      Get Started
+                    </a>
+                  </>
+                )}
+              </div>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );

@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { LINKS, EMAILS, APP_URL, DOCS_URL } from "@/lib/constants";
+import { LogoSymbol } from "@/components/Logo";
 
 export function Footer() {
   return (
     <footer className="border-t border-border bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div>
             <h3 className="text-sm font-semibold text-foreground mb-4">
@@ -157,25 +158,47 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-foreground rounded-md flex items-center justify-center">
-              <span className="text-background text-xs font-bold">C</span>
-            </div>
-            <span className="text-sm font-medium text-foreground">
-              craft.fast
+        <div className="mt-12 pt-8 border-t border-border">
+          {/* Powered by infrastructure */}
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mb-8">
+            <span className="text-xs text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
+              Powered by
             </span>
+            {[
+              { name: "E2B", href: "https://e2b.dev" },
+              { name: "Neon", href: "https://neon.tech" },
+              { name: "Vercel", href: "https://vercel.com" },
+            ].map((partner) => (
+              <a
+                key={partner.name}
+                href={partner.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-medium text-neutral-500 hover:text-foreground transition-colors"
+              >
+                {partner.name}
+              </a>
+            ))}
           </div>
-          <p className="text-sm text-neutral-500">
-            &copy; {new Date().getFullYear()} Nextcrafter Labs (OPC) Private
-            Limited. All rights reserved.
-          </p>
-          <a
-            href={`mailto:${EMAILS.HELLO}`}
-            className="text-sm text-neutral-500 hover:text-foreground transition-colors"
-          >
-            {EMAILS.HELLO}
-          </a>
+
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-2">
+              <LogoSymbol className="h-5 w-auto" />
+              <span className="text-sm font-medium text-foreground">
+                craft.fast
+              </span>
+            </div>
+            <p className="text-xs sm:text-sm text-neutral-500 text-center">
+              &copy; {new Date().getFullYear()} Nextcrafter Labs (OPC) Private
+              Limited. All rights reserved.
+            </p>
+            <a
+              href={`mailto:${EMAILS.HELLO}`}
+              className="text-xs sm:text-sm text-neutral-500 hover:text-foreground transition-colors"
+            >
+              {EMAILS.HELLO}
+            </a>
+          </div>
         </div>
       </div>
     </footer>
