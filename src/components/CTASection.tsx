@@ -25,7 +25,7 @@ export function CTASection() {
             You&apos;ve read this far.
             <br />
             <span className="text-neutral-400 dark:text-neutral-500">
-              Now try it.
+              Now build something real.
             </span>
           </h2>
         </motion.div>
@@ -37,8 +37,7 @@ export function CTASection() {
           transition={{ duration: 0.5, delay: 0.15 }}
           className="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 mb-10 sm:mb-12 max-w-xl mx-auto leading-relaxed px-2"
         >
-          Free tier, no credit card. Build something real in the next five
-          minutes and decide for yourself.
+          From $10/mo. Every dollar becomes AI credits at provider cost.
         </motion.p>
 
         <motion.div
@@ -51,7 +50,7 @@ export function CTASection() {
             href={`${ACCOUNTS_URL}/signup`}
             className="group inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-3.5 sm:py-4 text-sm sm:text-base font-medium bg-foreground text-background rounded-full hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 shadow-lg shadow-neutral-900/10 dark:shadow-neutral-100/5"
           >
-            Start Building
+            Start Building &mdash; From $10/mo
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
           </a>
         </motion.div>

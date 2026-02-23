@@ -16,43 +16,39 @@ const features: Feature[] = [
     icon: <Code className="w-5 h-5" />,
     title: "Full-Stack, Not Just Frontend",
     description:
-      "Most AI tools stop at the UI. Craft writes API routes, database queries, auth middleware, and server actions — the code you'd actually have to write yourself.",
-    span: "md:col-span-2",
+      "API routes, database queries, auth, server actions, deployment config. Not just UI components.",
+    span: "sm:col-span-2 md:col-span-2",
   },
   {
     icon: <Globe className="w-5 h-5" />,
-    title: "Real Sandbox, Not an Iframe",
+    title: "Real Sandbox",
     description:
-      "Each project runs in an isolated E2B microVM with its own Node.js process. npm install works. Environment variables work. It behaves like a real machine.",
-    span: "md:col-span-1",
+      "Each project runs in an isolated cloud VM. npm install, env vars, filesystem — it works like a real machine.",
   },
   {
     icon: <Terminal className="w-5 h-5" />,
-    title: "Postgres Out of the Box",
+    title: "Postgres Per Project",
     description:
-      "Every project gets a Neon database. The AI writes real SQL migrations, not toy schemas. Branching and connection pooling included.",
-    span: "md:col-span-1",
+      "Every project gets its own Postgres database. Real SQL migrations, branching, connection pooling.",
   },
   {
     icon: <Zap className="w-5 h-5" />,
-    title: "Deploy Without the Yak Shave",
+    title: "One-Click Deploy",
     description:
-      "One click to Vercel. No CI/CD config, no environment variable juggling, no DNS setup. It just works because the template already handles it.",
-    span: "md:col-span-1",
+      "Deploy to Vercel in one click. CI/CD, env vars, and DNS handled.",
   },
   {
     icon: <Sparkles className="w-5 h-5" />,
-    title: "Context That Actually Persists",
+    title: "Persistent Context",
     description:
-      "The AI reads your whole codebase on every turn. It knows what it built last Tuesday. No re-explaining, no context loss between sessions.",
-    span: "md:col-span-1",
+      "The AI reads your full codebase every turn. It remembers what it built. No re-explaining.",
   },
   {
     icon: <Layers className="w-5 h-5" />,
-    title: "Opinionated Defaults, Zero Lock-in",
+    title: "Standard Next.js. No Lock-in.",
     description:
-      "Every project starts as a standard Next.js 16 app with TypeScript, Tailwind v4, and App Router. Eject anytime — it's just a normal repo.",
-    span: "md:col-span-2",
+      "Next.js 16, TypeScript, Tailwind v4, App Router. It's a normal repo. Eject anytime.",
+    span: "sm:col-span-2 md:col-span-3",
   },
 ];
 
@@ -91,7 +87,7 @@ export function FeaturesGrid() {
             What you actually get
           </h2>
           <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto px-2">
-            Not a list of features. A list of problems you won&apos;t have.
+            Everything included in every project.
           </p>
         </motion.div>
 
@@ -107,7 +103,7 @@ export function FeaturesGrid() {
             <motion.div
               key={index}
               variants={cardVariants}
-              className={`group relative p-5 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-white/60 dark:bg-neutral-900/40 backdrop-blur-sm hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-300 hover:shadow-xl hover:shadow-neutral-900/5 dark:hover:shadow-black/20 ${feature.span ? "sm:col-span-2 md:col-span-2" : ""}`}
+              className={`group relative p-5 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-white/60 dark:bg-neutral-900/40 backdrop-blur-sm hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-300 hover:shadow-xl hover:shadow-neutral-900/5 dark:hover:shadow-black/20 ${feature.span ?? ""}`}
             >
               {/* Hover glow effect */}
               <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_0%,oklch(0.9_0_0/0.08),transparent_70%)] dark:bg-[radial-gradient(circle_at_50%_0%,oklch(0.3_0_0/0.15),transparent_70%)] pointer-events-none" />

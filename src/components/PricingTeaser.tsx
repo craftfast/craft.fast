@@ -8,14 +8,22 @@ const plans = [
   {
     name: "Hobby",
     price: "$10",
-    desc: "Side projects & learning",
+    credits: "$10 in credits",
+    desc: "For side projects and learning.",
     popular: false,
   },
-  { name: "Pro", price: "$50", desc: "Serious builders", popular: true },
+  {
+    name: "Pro",
+    price: "$50",
+    credits: "$50 in credits",
+    desc: "For daily use. Zero platform fee.",
+    popular: true,
+  },
   {
     name: "Max",
     price: "$100",
-    desc: "Ship faster, spend less thinking about credits",
+    credits: "$100 in credits",
+    desc: "5 sandboxes, early access.",
     popular: false,
   },
 ];
@@ -52,9 +60,11 @@ export function PricingTeaser() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
             Honest pricing
           </h2>
-          <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto mb-10 sm:mb-14 px-2">
-            Credits-based. You see exactly what each generation costs before it
-            runs. No surprise invoices, no &ldquo;contact sales&rdquo; gates.
+          <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto mb-4 px-2">
+            Your subscription converts to credits. $1 credit = $1 of AI cost.
+          </p>
+          <p className="text-sm text-neutral-500 dark:text-neutral-500 max-w-xl mx-auto mb-10 sm:mb-14 px-2">
+            10% fee on top-ups only &middot; Zero fee on subscription credits
           </p>
         </motion.div>
 
@@ -101,7 +111,16 @@ export function PricingTeaser() {
                   /month
                 </p>
                 <p
-                  className={`text-xs mt-3 leading-relaxed ${
+                  className={`text-xs font-medium mt-2 ${
+                    plan.popular
+                      ? "text-neutral-300 dark:text-neutral-400"
+                      : "text-neutral-600 dark:text-neutral-400"
+                  }`}
+                >
+                  {plan.credits}
+                </p>
+                <p
+                  className={`text-xs mt-2 leading-relaxed ${
                     plan.popular
                       ? "text-neutral-400 dark:text-neutral-500"
                       : "text-neutral-500"

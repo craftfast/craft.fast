@@ -6,20 +6,19 @@ const steps = [
   {
     number: "01",
     title: "Prompt",
-    description:
-      "Write a prompt or paste a spec. Craft understands technical language — you can say 'add a Stripe webhook' and it knows what that means without hand-holding.",
+    description: "Describe what you want in plain English or paste a spec.",
   },
   {
     number: "02",
     title: "Build",
     description:
-      "Craft writes the code, installs dependencies, runs migrations, and starts the dev server in a cloud sandbox. You watch it render, not just stream tokens.",
+      "Craft writes code, installs dependencies, runs migrations, and starts the dev server in a cloud sandbox.",
   },
   {
     number: "03",
     title: "Iterate & Ship",
     description:
-      "Talk to the running app. Say 'the chart is clipped on mobile' and Craft will fix it with your actual viewport in context. Deploy when you're satisfied.",
+      "Talk to the running app, point out issues, and deploy when it's ready.",
   },
 ];
 
@@ -57,7 +56,7 @@ export function HowItWorks() {
             How it actually works
           </h2>
           <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 px-2">
-            No hidden steps. No &ldquo;then manually fix the 47 errors.&rdquo;
+            Three steps. No surprises.
           </p>
         </motion.div>
 

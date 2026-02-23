@@ -3,17 +3,18 @@
 import { motion } from "framer-motion";
 
 const models = [
-  { name: "Claude Sonnet 4", provider: "Anthropic" },
-  { name: "GPT-5", provider: "OpenAI" },
+  { name: "Claude Opus 4.6", provider: "Anthropic" },
+  { name: "GPT-5.2", provider: "OpenAI" },
   { name: "Gemini 2.5 Pro", provider: "Google" },
   { name: "Grok 4", provider: "xAI" },
 ];
 
 const benefits = [
-  "Switch models mid-conversation — no restart needed",
-  "Per-token billing at provider rates, visible in your dashboard",
-  "Automatic routing falls back gracefully on rate limits",
-  "All models see the same project context and file tree",
+  "Switch models mid-conversation",
+  "$1 credit = $1 of AI cost",
+  "Auto-fallback on rate limits",
+  "Every model sees your full codebase",
+  "New models added without deploys",
 ];
 
 const containerVariants = {
@@ -54,9 +55,8 @@ export function AIModels() {
               </span>
             </h2>
             <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 mb-8 sm:mb-10 leading-relaxed">
-              We don&apos;t wrap one model and charge 10x. You get direct access
-              to Claude, GPT-5, Gemini, and Grok at provider cost. Pick your
-              model per-request, or let Craft route based on task complexity.
+              Pick any model per request. We bill at exactly what the provider
+              charges. No markup, no opaque credit systems.
             </p>
 
             <motion.ul
