@@ -12,7 +12,7 @@ const partners = [
   {
     name: "Neon",
     role: "Serverless Postgres",
-    href: "https://neon.tech",
+    href: "https://neon.com",
     description: "Real Postgres with branching, pooling, and autoscaling.",
   },
   {
@@ -23,9 +23,9 @@ const partners = [
   },
   {
     name: "Cloudflare",
-    role: "CDN & DNS",
+    role: "R2 Object Storage",
     href: "https://cloudflare.com",
-    description: "Global edge network. DDoS protection and smart routing.",
+    description: "S3-compatible object storage, files and project backups.",
   },
   {
     name: "Resend",

@@ -144,7 +144,7 @@ export default function AboutPage() {
         <main className="flex-1 pt-4 pb-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Hero Section */}
-            <div className="py-16 sm:py-24">
+            <div className="relative py-16 sm:py-24">
               <p className="text-sm font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-4">
                 About Craft
               </p>
