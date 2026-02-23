@@ -1197,16 +1197,20 @@ function CreditTopUpSlider({ appUrl }: { appUrl: string }) {
                 step={1}
                 value={selectedIndex}
                 onChange={(e) => setSelectedIndex(Number(e.target.value))}
-                style={{
-                  WebkitAppearance: "none",
-                  appearance: "none",
-                  width: "100%",
-                  height: "6px",
-                  borderRadius: "9999px",
-                  background: `linear-gradient(to right, #171717 ${pct}%, #e5e5e5 ${pct}%)`,
-                  outline: "none",
-                  cursor: "pointer",
-                }}
+                style={
+                  {
+                    WebkitAppearance: "none",
+                    appearance: "none",
+                    width: "100%",
+                    height: "6px",
+                    borderRadius: "9999px",
+                    background: `linear-gradient(to right, var(--slider-filled) ${pct}%, var(--slider-empty) ${pct}%)`,
+                    outline: "none",
+                    cursor: "pointer",
+                    "--slider-filled": "#171717",
+                    "--slider-empty": "#e5e5e5",
+                  } as React.CSSProperties
+                }
               />
               <style>{`
                 input[type=range]::-webkit-slider-thumb {
@@ -1232,6 +1236,10 @@ function CreditTopUpSlider({ appUrl }: { appUrl: string }) {
                   border: none;
                   cursor: grab;
                   box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+                }
+                .dark input[type=range] {
+                  --slider-filled: #fafafa !important;
+                  --slider-empty: #404040 !important;
                 }
                 .dark input[type=range]::-webkit-slider-thumb {
                   background: #fafafa;
@@ -1271,14 +1279,14 @@ function CreditTopUpSlider({ appUrl }: { appUrl: string }) {
             >
               Top Up Credits
             </Link>
-            <p className="mt-3 text-xs text-neutral-400 dark:text-neutral-500 text-center">
-              Top-up credits are valid for the duration of your current billing
-              period and expire on renewal. Monthly plans renew every 30 days;
-              annual plans renew yearly.
-            </p>
           </div>
         </div>
       </div>
+      <p className="mt-3 text-xs text-neutral-400 dark:text-neutral-500 text-center">
+        Top-up credits are valid for the duration of your current billing period
+        and expire on renewal. Monthly plans renew every month; annual plans
+        renew yearly, on billing date.
+      </p>
     </div>
   );
 }
