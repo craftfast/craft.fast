@@ -24,7 +24,7 @@ export default function BlogPage() {
       <main className="flex-1 pb-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Hero Section */}
-          <div className="text-center py-12 sm:py-16">
+          <div className="relative mt-14 sm:mt-20 text-center py-12 sm:py-16">
             <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
               Stories, updates, and insights
             </h1>

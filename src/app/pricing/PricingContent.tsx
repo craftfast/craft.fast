@@ -77,8 +77,8 @@ export function PricingContent({
   return (
     <>
       {/* Hero */}
-      <section className="text-center py-16 sm:py-20 px-4">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-4">
+      <section className="relative text-center py-12 px-4 mt-14 sm:mt-20">
+        <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
           Simple, transparent pricing
         </h1>
         <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
@@ -159,19 +159,26 @@ export function PricingContent({
 
                 <div className="mb-6">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-bold text-foreground">
-                      ${Math.round(price)}
-                    </span>
-                    <span className="text-neutral-500">/mo</span>
+                    {billingPeriod === "annual" ? (
+                      <>
+                        <span className="text-4xl font-bold text-foreground">
+                          ${Math.round(totalPrice)}
+                        </span>
+                        <span className="text-neutral-500">/year</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="text-4xl font-bold text-foreground">
+                          ${Math.round(price)}
+                        </span>
+                        <span className="text-neutral-500">/mo</span>
+                      </>
+                    )}
                   </div>
-                  {billingPeriod === "annual" && (
-                    <p className="text-sm text-neutral-500 mt-1">
-                      ${totalPrice} billed annually
-                    </p>
-                  )}
+
                   <p className="text-sm text-neutral-500 mt-1">
                     ${credits} credits
-                    {billingPeriod === "annual" ? "/year" : "/month"}
+                    {billingPeriod === "annual" ? " per year" : " per month"}
                   </p>
                 </div>
 
