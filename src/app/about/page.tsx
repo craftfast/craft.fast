@@ -141,13 +141,10 @@ export default function AboutPage() {
       <Header />
       <div className="min-h-screen bg-background text-foreground flex flex-col">
         {/* Main Content */}
-        <main className="flex-1 pt-4 pb-16">
+        <main className="flex-1 mt-12 pb-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Hero Section */}
-            <div className="relative py-16 sm:py-24">
-              <p className="text-sm font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-4">
-                About Craft
-              </p>
+            <div className="py-16 sm:py-24">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
                 Making Software Creation
                 <br />
