@@ -171,7 +171,7 @@ export function HeroSection() {
               {[
                 {
                   name: "E2B",
-                  href: "https://e2b.dev",
+                  href: "https://e2b.dev/startups",
                   Logo: E2BLogo,
                   className: "h-6 w-auto", // viewBox 409×140 → ~82px wide
                 },
@@ -193,7 +193,7 @@ export function HeroSection() {
                   href={tech.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-24 sm:w-32 opacity-40 hover:opacity-70 dark:opacity-50 dark:hover:opacity-80 transition-opacity duration-150 text-neutral-900 dark:text-neutral-100"
+                  className="flex items-center justify-center w-24 opacity-50 hover:opacity-70 dark:opacity-50 dark:hover:opacity-80 transition-opacity duration-150 text-neutral-900 dark:text-neutral-100"
                 >
                   <tech.Logo className={tech.className} />
                 </a>
