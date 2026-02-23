@@ -21,7 +21,7 @@ export const LINKS = {
 export const EMAILS = {
     SUPPORT: "support@craft.fast",
     SALES: "sales@craft.fast",
-    ENTERPRISE: "enterprise@craft.fast",
+    ENTERPRISE: "sales@craft.fast",
     LEGAL: "legal@craft.fast",
     HELLO: "hello@craft.fast",
     PRIVACY: "privacy@craft.fast",
