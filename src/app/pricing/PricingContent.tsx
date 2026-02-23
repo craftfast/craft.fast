@@ -11,7 +11,9 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const CREDIT_OPTIONS = [10, 25, 50, 100, 150, 200, 300, 500];
+const CREDIT_OPTIONS = [
+  10, 25, 50, 100, 150, 200, 300, 500, 1000, 2000, 3000, 5000,
+];
 const TOP_UP_PLATFORM_FEE_PERCENT = 10;
 
 interface Plan {
@@ -282,6 +284,20 @@ export function PricingContent({
         </div>
       </section>
 
+      {/* Credit Top-Up Slider */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl font-bold text-foreground mb-3">
+            Credit Top-ups
+          </h2>
+          <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+            10% platform fee on top-ups. All services at exact provider cost
+            with zero markup. Top up from $10 to $5,000 at any time.
+          </p>
+        </div>
+        <CreditTopUpSlider appUrl={appUrl} />
+      </section>
+
       {/* AI Model Pricing Table */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <div className="flex items-center justify-between mb-6">
@@ -372,7 +388,7 @@ export function PricingContent({
                     <td className="px-4 py-3 text-sm text-center">
                       <span
                         className={`px-2 py-0.5 text-xs font-medium rounded-full ${
-                          model.tier === "Fast"
+                          model.tier === "Lite"
                             ? "bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300"
                             : "bg-neutral-300 dark:bg-neutral-600 text-neutral-800 dark:text-neutral-200"
                         }`}
@@ -1082,20 +1098,6 @@ export function PricingContent({
         </div>
       </section>
 
-      {/* Credit Top-Up Slider */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold text-foreground mb-3">
-            Credit Top-ups
-          </h2>
-          <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
-            10% platform fee on top-ups. All services at exact provider cost
-            with zero markup. Top up from $10 to $500 at any time.
-          </p>
-        </div>
-        <CreditTopUpSlider appUrl={appUrl} />
-      </section>
-
       {/* FAQs */}
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
         <h2 className="text-3xl font-bold text-foreground text-center mb-12">
@@ -1166,75 +1168,115 @@ function CreditTopUpSlider({ appUrl }: { appUrl: string }) {
   const credits = CREDIT_OPTIONS[selectedIndex];
   const fee = credits * (TOP_UP_PLATFORM_FEE_PERCENT / 100);
   const total = credits + fee;
+  const pct = (selectedIndex / (CREDIT_OPTIONS.length - 1)) * 100;
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="w-full max-w-6xl mx-auto">
       <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-2xl p-8">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
-          {/* Left side - Credits amount */}
-          <div className="text-center lg:text-left lg:min-w-50 mb-6 lg:mb-0">
-            <div className="text-6xl font-bold text-foreground mb-1">
-              ${credits}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          {/* Left — slider */}
+          <div className="flex flex-col gap-6">
+            {/* Amount */}
+            <div>
+              <div className="text-6xl font-bold text-foreground leading-none">
+                ${credits.toLocaleString()}
+              </div>
+              <div className="text-sm text-neutral-500 mt-1">credits</div>
             </div>
-            <div className="text-sm text-neutral-500">credits</div>
+
+            {/* Native range — works across all browsers */}
+            <div className="flex flex-col gap-2">
+              <div className="flex justify-between text-xs text-neutral-400 font-medium">
+                <span>$10</span>
+                <span>$5,000</span>
+              </div>
+              <input
+                type="range"
+                min={0}
+                max={CREDIT_OPTIONS.length - 1}
+                step={1}
+                value={selectedIndex}
+                onChange={(e) => setSelectedIndex(Number(e.target.value))}
+                style={{
+                  WebkitAppearance: "none",
+                  appearance: "none",
+                  width: "100%",
+                  height: "6px",
+                  borderRadius: "9999px",
+                  background: `linear-gradient(to right, #171717 ${pct}%, #e5e5e5 ${pct}%)`,
+                  outline: "none",
+                  cursor: "pointer",
+                }}
+              />
+              <style>{`
+                input[type=range]::-webkit-slider-thumb {
+                  -webkit-appearance: none;
+                  appearance: none;
+                  width: 24px;
+                  height: 24px;
+                  border-radius: 50%;
+                  background: #171717;
+                  cursor: grab;
+                  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+                  transition: transform 0.1s;
+                }
+                input[type=range]::-webkit-slider-thumb:active {
+                  cursor: grabbing;
+                  transform: scale(1.15);
+                }
+                input[type=range]::-moz-range-thumb {
+                  width: 24px;
+                  height: 24px;
+                  border-radius: 50%;
+                  background: #171717;
+                  border: none;
+                  cursor: grab;
+                  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+                }
+                .dark input[type=range]::-webkit-slider-thumb {
+                  background: #fafafa;
+                }
+                .dark input[type=range]::-moz-range-thumb {
+                  background: #fafafa;
+                }
+              `}</style>
+            </div>
           </div>
 
-          {/* Middle - Slider */}
-          <div className="flex-1 mb-6 lg:mb-0">
-            <input
-              type="range"
-              min={0}
-              max={CREDIT_OPTIONS.length - 1}
-              step={1}
-              value={selectedIndex}
-              onChange={(e) => setSelectedIndex(Number(e.target.value))}
-              className="w-full h-2 bg-neutral-200 dark:bg-neutral-700 rounded-full appearance-none cursor-pointer accent-neutral-900 dark:accent-neutral-100 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-neutral-900 dark:[&::-webkit-slider-thumb]:bg-neutral-100 [&::-webkit-slider-thumb]:cursor-pointer [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-neutral-900 dark:[&::-moz-range-thumb]:bg-neutral-100 [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:cursor-pointer"
-            />
-            {/* Option labels */}
-            <div className="flex justify-between mt-3">
-              {CREDIT_OPTIONS.map((option, idx) => (
-                <button
-                  key={option}
-                  onClick={() => setSelectedIndex(idx)}
-                  className={`text-xs sm:text-sm font-medium transition-colors ${
-                    idx === selectedIndex
-                      ? "text-foreground"
-                      : "text-neutral-400 dark:text-neutral-500 hover:text-foreground"
-                  }`}
-                >
-                  ${option}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Right side - Price breakdown */}
-          <div className="lg:min-w-50 lg:border-l lg:border-neutral-200 lg:dark:border-neutral-700 lg:pl-8 pt-6 lg:pt-0 border-t lg:border-t-0 border-neutral-200 dark:border-neutral-700">
-            <div className="space-y-2">
+          {/* Right — breakdown */}
+          <div className="bg-neutral-50 dark:bg-neutral-800/50 rounded-xl p-6 border border-neutral-200 dark:border-neutral-700">
+            <div className="space-y-3">
               <div className="flex justify-between text-sm">
                 <span className="text-neutral-500">Credits</span>
-                <span className="text-foreground">${credits.toFixed(2)}</span>
+                <span className="font-medium text-foreground">
+                  ${credits.toFixed(2)}
+                </span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-neutral-500">Fee (10%)</span>
-                <span className="text-foreground">${fee.toFixed(2)}</span>
+                <span className="text-neutral-500">Platform fee (10%)</span>
+                <span className="font-medium text-foreground">
+                  ${fee.toFixed(2)}
+                </span>
               </div>
-              <div className="flex justify-between text-base font-semibold pt-2 border-t border-neutral-200 dark:border-neutral-700">
-                <span className="text-foreground">Total</span>
-                <span className="text-foreground">${total.toFixed(2)}</span>
+              <div className="border-t border-neutral-200 dark:border-neutral-700 pt-3 flex justify-between items-baseline">
+                <span className="font-semibold text-foreground">Total</span>
+                <span className="text-xl font-bold text-foreground">
+                  ${total.toFixed(2)}
+                </span>
               </div>
             </div>
+            <Link
+              href={`${appUrl}/settings/billing`}
+              className="w-full block mt-5 px-6 py-3 bg-foreground text-background hover:bg-neutral-800 dark:hover:bg-neutral-200 rounded-full font-medium transition-colors text-center text-sm"
+            >
+              Top Up Credits
+            </Link>
+            <p className="mt-3 text-xs text-neutral-400 dark:text-neutral-500 text-center">
+              Top-up credits are valid for the duration of your current billing
+              period and expire on renewal. Monthly plans renew every 30 days;
+              annual plans renew yearly.
+            </p>
           </div>
-        </div>
-
-        {/* Top Up CTA */}
-        <div className="mt-6 text-center">
-          <Link
-            href={`${appUrl}/settings/billing`}
-            className="inline-flex px-6 py-2.5 bg-foreground text-background hover:bg-neutral-800 dark:hover:bg-neutral-200 rounded-full font-medium transition-colors text-sm"
-          >
-            Top Up Credits
-          </Link>
         </div>
       </div>
     </div>

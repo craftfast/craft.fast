@@ -95,81 +95,49 @@ const enterpriseFeatures = [
   "Dedicated account manager",
 ];
 
-// AI Models with exact provider pricing
-const aiModels = [
-  {
-    name: "GPT-5 Mini",
-    provider: "OpenAI",
-    input: 0.15,
-    output: 0.6,
-    context: "128K",
-    tier: "Fast",
-    link: EXTERNAL_LINKS.openai,
-  },
-  {
-    name: "Gemini 3 Flash",
-    provider: "Google",
-    input: 0.5,
-    output: 3.0,
-    context: "1M",
-    tier: "Fast",
-    link: EXTERNAL_LINKS.google,
-  },
-  {
-    name: "Claude Haiku 4.5",
-    provider: "Anthropic",
-    input: 1.0,
-    output: 5.0,
-    context: "200K",
-    tier: "Fast",
-    link: EXTERNAL_LINKS.anthropic,
-  },
-  {
-    name: "Gemini 2.5 Pro",
-    provider: "Google",
-    input: 1.25,
-    output: 10.0,
-    context: "1M",
-    tier: "Expert",
-    link: EXTERNAL_LINKS.google,
-  },
-  {
-    name: "GPT-5.2",
-    provider: "OpenAI",
-    input: 1.75,
-    output: 14.0,
-    context: "400K",
-    tier: "Expert",
-    link: EXTERNAL_LINKS.openai,
-  },
-  {
-    name: "Gemini 3 Pro (Preview)",
-    provider: "Google",
-    input: 2.0,
-    output: 12.0,
-    context: "1M",
-    tier: "Expert",
-    link: EXTERNAL_LINKS.google,
-  },
-  {
-    name: "Claude Sonnet 4.5",
-    provider: "Anthropic",
-    input: 3.0,
-    output: 15.0,
-    context: "200K",
-    tier: "Expert",
-    link: EXTERNAL_LINKS.anthropic,
-  },
-  {
-    name: "Claude Opus 4.6",
-    provider: "Anthropic",
-    input: 5.0,
-    output: 25.0,
-    context: "1M",
-    tier: "Expert",
-    link: EXTERNAL_LINKS.anthropic,
-  },
-];
+// Fetch AI models from the app's public API for the pricing page
+async function getAiModelsForPricing() {
+  try {
+    const res = await fetch(`${APP_URL}/api/public/models`, {
+      next: { revalidate: 3600 },
+    });
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+    const models = (await res.json()) as Array<{
+      id: string;
+      name: string;
+      provider: string;
+      tier: "LITE" | "PREMIUM";
+      input: number;
+      output: number;
+      contextLength: number | null;
+      metadata: Record<string, unknown> | null;
+    }>;
+
+    return models.map((model) => ({
+      name: model.name,
+      provider: model.provider,
+      input: model.input,
+      output: model.output,
+      context: model.contextLength
+        ? model.contextLength >= 1_000_000
+          ? `${(model.contextLength / 1_000_000).toFixed(0)}M`
+          : `${(model.contextLength / 1_000).toFixed(0)}K`
+        : "Unknown",
+      tier: model.tier === "LITE" ? "Lite" : "Premium",
+      link:
+        model.metadata && "docLink" in model.metadata
+          ? (model.metadata.docLink as string)
+          : EXTERNAL_LINKS[
+              model.provider.toLowerCase() as keyof typeof EXTERNAL_LINKS
+            ] || "#",
+    }));
+  } catch (error) {
+    console.error("[pricing] Failed to fetch AI models:", error);
+    return [];
+  }
+}
 
 const faqs = [
   {
@@ -190,7 +158,7 @@ const faqs = [
   },
   {
     q: "What AI models are available?",
-    a: "Hobby plans have access to Lite/Fast models (efficient and affordable). Pro and Max plans unlock Expert/Premium models including Claude Sonnet 4.5, Claude Opus 4.6, GPT-5.2, Gemini 2.5 Pro, and more.",
+    a: "Hobby plans have access to Lite models (efficient and affordable). Pro and Max plans unlock Premium models including Claude Sonnet 4.5, Claude Opus 4.6, GPT-5.2, Gemini 2.5 Pro, and more.",
   },
   {
     q: "Is there a free trial?",
@@ -210,7 +178,9 @@ const faqs = [
   },
 ];
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const aiModelsData = await getAiModelsForPricing();
+
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Header />
@@ -219,7 +189,7 @@ export default function PricingPage() {
         <PricingContent
           plans={plans}
           enterpriseFeatures={enterpriseFeatures}
-          aiModels={aiModels}
+          aiModels={aiModelsData}
           faqs={faqs}
           externalLinks={EXTERNAL_LINKS}
           appUrl={APP_URL}
