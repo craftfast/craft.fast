@@ -59,7 +59,7 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40 px-3 sm:px-4 pt-3 sm:pt-4">
-      <div className="max-w-6xl mx-auto bg-white/70 dark:bg-neutral-950/70 backdrop-blur-xl border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl sm:rounded-2xl shadow-lg shadow-neutral-900/5 dark:shadow-black/20 px-3 sm:px-4 md:px-6">
+      <div className="max-w-4xl mt-4 mx-auto bg-white/70 dark:bg-neutral-950/70 backdrop-blur-xl border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl sm:rounded-2xl shadow-lg shadow-neutral-900/5 dark:shadow-black/20 px-3 sm:px-4 md:px-6">
         <div className="relative flex items-center h-11 sm:h-12">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
@@ -96,7 +96,7 @@ export function Header() {
           </nav>
 
           {/* Right Side */}
-          <div className="flex items-center gap-3 ml-auto">
+          <div className="flex items-center gap-1 ml-auto">
             <ThemeToggle />
             {mounted && (
               <>
@@ -167,15 +167,9 @@ export function Header() {
                   <>
                     <a
                       href={`${ACCOUNTS_URL}/signin`}
-                      className="hidden sm:inline-flex items-center px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-foreground transition-colors"
-                    >
-                      Sign in
-                    </a>
-                    <a
-                      href={`${ACCOUNTS_URL}/signup`}
                       className="hidden sm:inline-flex items-center px-5 py-2 text-sm font-medium bg-foreground text-background rounded-full hover:opacity-90 transition-opacity"
                     >
-                      Get Started
+                      Log in
                     </a>
                   </>
                 )}

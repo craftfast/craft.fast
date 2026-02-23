@@ -172,7 +172,7 @@ export function HeroSection() {
                   </span>
                 </div>
                 <div className="bg-neutral-800 rounded-2xl rounded-tl-sm px-3 sm:px-4 py-2 sm:py-3 min-w-0 flex-1 max-w-lg">
-                  <p className="text-xs sm:text-sm text-neutral-300 font-mono wrap-break-words">
+                  <p className="text-xs sm:text-sm text-neutral-300 font-mono wrap-break-word">
                     {typedText}
                     <span className="inline-block w-0.5 h-3 sm:h-4 bg-neutral-400 ml-0.5 align-middle animate-cursor-blink" />
                   </p>
