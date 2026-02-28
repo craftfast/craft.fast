@@ -67,10 +67,10 @@ const plans = [
     name: "Max",
     id: "max",
     description: "Maximum power for heavy users",
-    monthlyPrice: 100,
-    annualPrice: 1200, // 12 x $100
-    monthlyCredits: 100, // full price
-    annualCredits: 1200, // full price
+    monthlyPrice: 250,
+    annualPrice: 3000, // 12 x $250
+    monthlyCredits: 250, // full price
+    annualCredits: 3000, // full price
     features: [
       "Unlimited projects",
       "5 concurrent sandboxes",

@@ -21,8 +21,8 @@ const plans = [
   },
   {
     name: "Max",
-    price: "$100",
-    credits: "$100 in credits",
+    price: "$250",
+    credits: "$250 in credits",
     desc: "5 sandboxes, early access.",
     popular: false,
   },
