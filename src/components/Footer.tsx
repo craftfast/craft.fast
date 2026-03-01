@@ -159,28 +159,6 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-border">
-          {/* Powered by infrastructure */}
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mb-8">
-            <span className="text-xs text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
-              Powered by
-            </span>
-            {[
-              { name: "E2B", href: "https://e2b.dev" },
-              { name: "Neon", href: "https://neon.tech" },
-              { name: "Vercel", href: "https://vercel.com" },
-            ].map((partner) => (
-              <a
-                key={partner.name}
-                href={partner.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-medium text-neutral-500 hover:text-foreground transition-colors"
-              >
-                {partner.name}
-              </a>
-            ))}
-          </div>
-
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-2">
               <LogoSymbol className="h-5 w-auto" />

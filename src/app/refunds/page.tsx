@@ -14,7 +14,7 @@ export default function RefundPolicy() {
       <Header />
       <div className="min-h-screen bg-background text-foreground flex flex-col">
         {/* Main Content */}
-        <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mt-24">
           <div className="prose prose-neutral dark:prose-invert max-w-none">
             <h1 className="text-4xl font-bold mb-2">
               Cancellation &amp; Refund Policy

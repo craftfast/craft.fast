@@ -54,7 +54,7 @@ const plans = [
     monthlyCredits: 50, // full price
     annualCredits: 600, // full price
     features: [
-      "Unlimited projects",
+      "50 projects",
       "3 concurrent sandboxes",
       "Lite + Premium AI models",
       "30-day git history",
@@ -72,7 +72,7 @@ const plans = [
     monthlyCredits: 250, // full price
     annualCredits: 3000, // full price
     features: [
-      "Unlimited projects",
+      "250 projects",
       "5 concurrent sandboxes",
       "Lite + Premium AI models",
       "90-day git history",

@@ -84,10 +84,10 @@ export default function SupportPage() {
       <Header />
       <div className="min-h-screen bg-background text-foreground flex flex-col">
         {/* Main Content */}
-        <main className="flex-1 pb-16">
+        <main className="flex-1 pb-16 mt-24">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Hero Section */}
-            <div className="text-center py-12 sm:py-16">
+            <div className="text-center py-8 sm:py-12">
               <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
                 How can we help you?
               </h1>

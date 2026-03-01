@@ -110,7 +110,7 @@ export function HeroSection() {
                 delay: 0.15,
                 ease: [0.23, 1, 0.32, 1],
               }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-bold text-foreground leading-[1.05] tracking-tight"
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-foreground leading-[1.05] tracking-tight"
             >
               Ship the app,
               <br />

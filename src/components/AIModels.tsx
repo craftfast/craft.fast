@@ -2,11 +2,18 @@
 
 import { motion } from "framer-motion";
 
-const models = [
-  { name: "Claude Opus 4.6", provider: "Anthropic" },
-  { name: "GPT-5.2", provider: "OpenAI" },
-  { name: "Gemini 2.5 Pro", provider: "Google" },
-  { name: "Grok 4", provider: "xAI" },
+export interface AIModelEntry {
+  name: string;
+  provider: string;
+  tier?: string;
+}
+
+/** Fallback models shown when the live API is unavailable */
+const FALLBACK_MODELS: AIModelEntry[] = [
+  { name: "Claude Opus 4.6", provider: "Anthropic", tier: "Premium" },
+  { name: "GPT-5.2", provider: "OpenAI", tier: "Premium" },
+  { name: "Gemini 2.5 Pro", provider: "Google", tier: "Premium" },
+  { name: "Grok 4", provider: "xAI", tier: "Premium" },
 ];
 
 const benefits = [
@@ -14,7 +21,7 @@ const benefits = [
   "$1 credit = $1 of AI cost",
   "Auto-fallback on rate limits",
   "Every model sees your full codebase",
-  "New models added without deploys",
+  "Always access to the latest models from every lab",
 ];
 
 const containerVariants = {
@@ -33,7 +40,28 @@ const itemVariants = {
   },
 };
 
-export function AIModels() {
+interface AIModelsProps {
+  models?: AIModelEntry[];
+}
+
+export function AIModels({ models: fetchedModels }: AIModelsProps = {}) {
+  // Show up to 4 models — prioritise Premium, fill remaining slots with Lite
+  const displayModels = (() => {
+    const source =
+      fetchedModels && fetchedModels.length > 0
+        ? fetchedModels
+        : FALLBACK_MODELS;
+
+    const premium = source.filter(
+      (m) => (m.tier ?? "").toLowerCase() === "premium",
+    );
+    const lite = source.filter((m) => (m.tier ?? "").toLowerCase() === "lite");
+
+    // Take up to 4 premium; if fewer than 4, fill with lite models
+    const picked = [...premium.slice(0, 4), ...lite].slice(0, 4);
+    return picked.length > 0 ? picked : source.slice(0, 4);
+  })();
+
   return (
     <section className="py-16 sm:py-24 lg:py-32 border-t border-border relative overflow-hidden">
       <div className="absolute inset-0 noise-overlay pointer-events-none opacity-30" />
@@ -93,7 +121,7 @@ export function AIModels() {
             }}
             className="grid grid-cols-2 gap-3 sm:gap-4"
           >
-            {models.map((model, i) => (
+            {displayModels.map((model, i) => (
               <div
                 key={model.name}
                 className={`group relative p-4 sm:p-5 lg:p-6 rounded-xl sm:rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/50 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-300 hover:shadow-lg hover:shadow-neutral-900/5 dark:hover:shadow-black/20 ${
@@ -104,9 +132,16 @@ export function AIModels() {
                 <div className="absolute inset-0 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_0%,oklch(0.9_0_0/0.08),transparent_60%)] dark:bg-[radial-gradient(circle_at_50%_0%,oklch(0.3_0_0/0.15),transparent_60%)] pointer-events-none" />
 
                 <div className="relative">
-                  <p className="text-xs font-medium text-neutral-500 dark:text-neutral-500 mb-2 uppercase tracking-wider">
-                    {model.provider}
-                  </p>
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-xs font-medium text-neutral-500 dark:text-neutral-500 uppercase tracking-wider">
+                      {model.provider}
+                    </p>
+                    {model.tier && (
+                      <span className="text-xs text-neutral-400 dark:text-neutral-600">
+                        {model.tier}
+                      </span>
+                    )}
+                  </div>
                   <p className="font-semibold text-foreground">{model.name}</p>
                 </div>
               </div>

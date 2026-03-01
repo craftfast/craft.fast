@@ -14,7 +14,7 @@ export default function TermsOfService() {
       <Header />
       <div className="min-h-screen bg-background text-foreground flex flex-col">
         {/* Main Content */}
-        <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mt-24">
           <div className="prose prose-neutral dark:prose-invert max-w-none">
             <h1 className="text-4xl font-bold mb-2">Terms of Service</h1>
             <p className="text-neutral-600 dark:text-neutral-400 mb-8">
@@ -135,7 +135,9 @@ export default function TermsOfService() {
                       • <strong>Zero markup</strong> on all provider services
                     </li>
                     <li>• Credits valid for 1 year from purchase</li>
-                    <li>• Unlimited projects</li>
+                    <li>
+                      • Projects included per plan (10 Hobby / 50 Pro / 250 Max)
+                    </li>
                   </ul>
                 </div>
 
