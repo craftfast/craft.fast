@@ -6,14 +6,40 @@ export interface AIModelEntry {
   name: string;
   provider: string;
   tier?: string;
+  inputPrice?: number; // $ per million tokens
+  outputPrice?: number; // $ per million tokens
 }
 
 /** Fallback models shown when the live API is unavailable */
 const FALLBACK_MODELS: AIModelEntry[] = [
-  { name: "Claude Opus 4.6", provider: "Anthropic", tier: "Premium" },
-  { name: "GPT-5.2", provider: "OpenAI", tier: "Premium" },
-  { name: "Gemini 2.5 Pro", provider: "Google", tier: "Premium" },
-  { name: "Grok 4", provider: "xAI", tier: "Premium" },
+  {
+    name: "Claude Opus 4.6",
+    provider: "Anthropic",
+    tier: "Premium",
+    inputPrice: 15,
+    outputPrice: 75,
+  },
+  {
+    name: "GPT-5.2",
+    provider: "OpenAI",
+    tier: "Premium",
+    inputPrice: 10,
+    outputPrice: 30,
+  },
+  {
+    name: "Gemini 2.5 Pro",
+    provider: "Google",
+    tier: "Premium",
+    inputPrice: 1.25,
+    outputPrice: 10,
+  },
+  {
+    name: "Grok 4",
+    provider: "xAI",
+    tier: "Premium",
+    inputPrice: 3,
+    outputPrice: 15,
+  },
 ];
 
 const benefits = [
@@ -142,7 +168,42 @@ export function AIModels({ models: fetchedModels }: AIModelsProps = {}) {
                       </span>
                     )}
                   </div>
-                  <p className="font-semibold text-foreground">{model.name}</p>
+                  <p className="font-semibold text-foreground mb-3">
+                    {model.name}
+                  </p>
+                  {(model.inputPrice !== undefined ||
+                    model.outputPrice !== undefined) && (
+                    <div className="space-y-1">
+                      {model.inputPrice !== undefined && (
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs text-neutral-400 dark:text-neutral-600">
+                            Input
+                          </span>
+                          <span className="text-xs font-medium text-neutral-600 dark:text-neutral-400">
+                            $
+                            {model.inputPrice % 1 === 0
+                              ? model.inputPrice
+                              : model.inputPrice.toFixed(2)}
+                            /M
+                          </span>
+                        </div>
+                      )}
+                      {model.outputPrice !== undefined && (
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs text-neutral-400 dark:text-neutral-600">
+                            Output
+                          </span>
+                          <span className="text-xs font-medium text-neutral-600 dark:text-neutral-400">
+                            $
+                            {model.outputPrice % 1 === 0
+                              ? model.outputPrice
+                              : model.outputPrice.toFixed(2)}
+                            /M
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

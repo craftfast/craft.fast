@@ -21,11 +21,15 @@ async function fetchAvailableModels(): Promise<AIModelEntry[]> {
       name: string;
       provider: string;
       tier: string;
+      input: number;
+      output: number;
     }>;
     return data.map((m) => ({
       name: m.name,
       provider: m.provider,
       tier: m.tier === "LITE" ? "Lite" : "Premium",
+      inputPrice: m.input,
+      outputPrice: m.output,
     }));
   } catch {
     return [];
