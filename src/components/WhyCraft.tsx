@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Eye, DollarSign, Shield, Server } from "lucide-react";
+import { ArrowRight, DollarSign, Shield, Server } from "lucide-react";
 import Link from "next/link";
 
 const values = [
@@ -10,12 +10,6 @@ const values = [
     title: "Zero Markup on AI",
     description:
       "We charge you exactly what AI providers charge us. $50 plan = $50 of AI usage.",
-  },
-  {
-    icon: <Eye className="w-5 h-5" />,
-    title: "See Costs Before You Run",
-    description:
-      "Every generation shows an estimated cost before it runs. $1 credit = $1 of real AI cost. No opaque token systems.",
   },
   {
     icon: <Shield className="w-5 h-5" />,
@@ -69,7 +63,7 @@ export function WhyCraft() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:gap-6 max-w-4xl mx-auto mb-10 sm:mb-14"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 max-w-5xl mx-auto mb-10 sm:mb-14"
         >
           {values.map((value, index) => (
             <motion.div

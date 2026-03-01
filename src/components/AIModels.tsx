@@ -44,7 +44,6 @@ const FALLBACK_MODELS: AIModelEntry[] = [
 
 const benefits = [
   "Switch models mid-conversation",
-  "$1 credit = $1 of AI cost",
   "Auto-fallback on rate limits",
   "Every model sees your full codebase",
   "Always access to the latest models from every lab",

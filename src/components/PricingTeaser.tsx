@@ -61,7 +61,8 @@ export function PricingTeaser() {
             Honest pricing
           </h2>
           <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto mb-4 px-2">
-            Your subscription converts to credits. $1 credit = $1 of AI cost.
+            Your subscription converts to credits. No markups, no opaque token
+            systems.
           </p>
           <p className="text-sm text-neutral-500 dark:text-neutral-500 max-w-xl mx-auto mb-10 sm:mb-14 px-2">
             10% fee on top-ups only &middot; Zero fee on subscription credits
