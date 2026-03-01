@@ -994,15 +994,15 @@ export function PricingContent({
                   Per email sent
                 </td>
                 <td className="px-4 py-3 text-sm font-mono text-foreground text-right">
-                  $0.00055
+                  $0.0009
                 </td>
               </tr>
               <tr className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
                 <td className="px-4 py-3 text-sm text-foreground">
                   Custom domain add-on
                 </td>
-                <td className="px-4 py-3 text-sm font-mono text-foreground text-right">
-                  $2.00/mo
+                <td className="px-4 py-3 text-sm font-mono text-neutral-400 dark:text-neutral-500 text-right">
+                  Coming Soon
                 </td>
               </tr>
             </tbody>
