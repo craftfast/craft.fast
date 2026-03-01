@@ -48,7 +48,7 @@ const plans = [
   {
     name: "Pro",
     id: "pro",
-    description: "For professional developers",
+    description: "For professional builders",
     monthlyPrice: 50,
     annualPrice: 600, // 12 x $50
     monthlyCredits: 50, // full price
