@@ -154,7 +154,7 @@ const faqs = [
   },
   {
     q: "Do unused credits roll over?",
-    a: "Credits are valid for 1 year from the date of purchase. Monthly subscription credits reset each cycle and do not roll over.",
+    a: "All credits (subscription and top-up) share a unified balance tied to your billing cycle. They reset at each renewal — monthly or annually — and do not roll over.",
   },
   {
     q: "What AI models are available?",
