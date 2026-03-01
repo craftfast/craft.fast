@@ -170,12 +170,6 @@ export function Footer() {
               &copy; {new Date().getFullYear()} Nextcrafter Labs (OPC) Private
               Limited. All rights reserved.
             </p>
-            <a
-              href={`mailto:${EMAILS.HELLO}`}
-              className="text-xs sm:text-sm text-neutral-500 hover:text-foreground transition-colors"
-            >
-              {EMAILS.HELLO}
-            </a>
           </div>
         </div>
       </div>

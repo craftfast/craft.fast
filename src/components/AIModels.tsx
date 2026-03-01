@@ -145,7 +145,7 @@ export function AIModels({ models: fetchedModels }: AIModelsProps = {}) {
               delay: 0.15,
               ease: [0.23, 1, 0.32, 1],
             }}
-            className="grid grid-cols-2 gap-3 sm:gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4"
           >
             {displayModels.map((model, i) => (
               <div
