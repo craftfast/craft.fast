@@ -46,7 +46,7 @@ const benefits = [
   "Switch models mid-conversation",
   "Auto-fallback on rate limits",
   "Every model sees your full codebase",
-  "Always access to the latest models from every lab",
+  "Access to the latest models",
 ];
 
 const containerVariants = {
