@@ -50,22 +50,22 @@ const groups: ComparisonGroup[] = [
       },
       {
         feature: "Object storage",
-        craft: "Cloudflare R2 - included free",
+        craft: "Cloudflare R2",
         others: false,
       },
       {
         feature: "Transactional email",
-        craft: "Resend - included",
+        craft: "Resend",
         others: false,
       },
       {
         feature: "Managed cache / Redis",
-        craft: "Upstash Redis - included",
+        craft: "Upstash Redis",
         others: false,
       },
       {
         feature: "Production deployment",
-        craft: "Vercel - auto-deploy on save",
+        craft: "Vercel",
         others: "Manual or export only",
       },
     ],
