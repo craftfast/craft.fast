@@ -28,7 +28,7 @@ export function Header() {
   const { data: session, isPending } = useSession();
 
   useEffect(() => {
-    setMounted(true);
+    requestAnimationFrame(() => setMounted(true));
   }, []);
 
   // Close profile menu on outside click

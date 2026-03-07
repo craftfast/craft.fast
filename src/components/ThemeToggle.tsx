@@ -10,7 +10,7 @@ export function ThemeToggle() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    requestAnimationFrame(() => setMounted(true));
   }, []);
 
   // Close on outside click

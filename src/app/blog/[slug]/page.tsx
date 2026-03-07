@@ -3,9 +3,12 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { getBlogPost, getAllBlogSlugs, getAllBlogPosts } from "@/lib/blog";
-import { useMDXComponents } from "../../../../mdx-components";
+import { useMDXComponents as getMDXComponents } from "../../../../mdx-components";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { ShareButtons } from "@/components/blog/ShareButtons";
+
+// Get MDX components outside the async page function
+const mdxComponents = getMDXComponents({});
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -53,7 +56,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     .filter((p) => p.category === post.category && p.slug !== post.slug)
     .slice(0, 3);
 
-  const components = useMDXComponents({});
+  const components = mdxComponents;
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
