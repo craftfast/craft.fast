@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LINKS, EMAILS, APP_URL, DOCS_URL } from "@/lib/constants";
+import { LINKS, EMAILS, APP_URL, DOCS_URL, BLOG_URL } from "@/lib/constants";
 import { LogoSymbol } from "@/components/Logo";
 
 export function Footer() {
@@ -52,12 +52,12 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <Link
-                  href="/blog"
+                <a
+                  href={BLOG_URL}
                   className="text-neutral-500 hover:text-foreground transition-colors"
                 >
                   Blog
-                </Link>
+                </a>
               </li>
               <li>
                 <Link

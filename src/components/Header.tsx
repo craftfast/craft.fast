@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { APP_URL, ACCOUNTS_URL, DOCS_URL } from "@/lib/constants";
+import { APP_URL, ACCOUNTS_URL, DOCS_URL, BLOG_URL } from "@/lib/constants";
 import { useSession, signOut } from "@/lib/auth-client";
 import { LogoSymbol, LogoExtended } from "@/components/Logo";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -13,7 +13,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { label: "About", href: "/about" },
-  { label: "Blog", href: "/blog" },
+  { label: "Blog", href: BLOG_URL, external: true },
   { label: "Pricing", href: "/pricing" },
   { label: "Docs", href: DOCS_URL, external: true },
   { label: "Support", href: "/support" },
