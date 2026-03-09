@@ -38,7 +38,7 @@ export function HeroSection() {
               className="mb-6"
             >
               <a
-                href={LINKS.GITHUB_REPO}
+                href={`https://vercel.com/new/clone?repository-url=${encodeURIComponent(LINKS.GITHUB_REPO)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/60 backdrop-blur-md px-4 py-1.5 text-xs font-medium text-neutral-600 dark:text-neutral-400 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-200 shadow-sm"
