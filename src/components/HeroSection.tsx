@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Sparkles, Play, X, ChevronRight } from "lucide-react";
 import { ACCOUNTS_URL } from "@/lib/constants";
 import { E2BLogo, NeonLogo, VercelLogo } from "@/components/PartnerLogos";
+import { AnimatedBuildFlow } from "./AnimatedBuildFlow";
 
 function VideoModal({
   isOpen,
@@ -81,61 +82,6 @@ function VideoModal({
         </motion.div>
       )}
     </AnimatePresence>
-  );
-}
-
-const DEMO_PROMPTS = [
-  "Build a SaaS billing dashboard with Stripe payments and usage analytics",
-  "Create an e-commerce store with product catalog, cart, and checkout flow",
-  "Make a team collaboration app with projects, tasks, and real-time updates",
-  "Build a job board with company profiles, listings, and applicant tracking",
-];
-
-function PromptTyper() {
-  const [index, setIndex] = useState(0);
-  const [text, setText] = useState("");
-  const [phase, setPhase] = useState<"typing" | "pause" | "deleting">("typing");
-
-  useEffect(() => {
-    const current = DEMO_PROMPTS[index];
-
-    if (phase === "typing") {
-      if (text.length < current.length) {
-        const t = setTimeout(
-          () => setText(current.slice(0, text.length + 1)),
-          32,
-        );
-        return () => clearTimeout(t);
-      } else {
-        const t = setTimeout(() => setPhase("pause"), 2800);
-        return () => clearTimeout(t);
-      }
-    }
-
-    if (phase === "pause") {
-      const t = setTimeout(() => setPhase("deleting"), 400);
-      return () => clearTimeout(t);
-    }
-
-    if (phase === "deleting") {
-      if (text.length > 0) {
-        const t = setTimeout(() => setText(text.slice(0, -1)), 16);
-        return () => clearTimeout(t);
-      } else {
-        const t = setTimeout(() => {
-          setIndex((i) => (i + 1) % DEMO_PROMPTS.length);
-          setPhase("typing");
-        }, 0);
-        return () => clearTimeout(t);
-      }
-    }
-  }, [text, phase, index]);
-
-  return (
-    <>
-      {text}
-      <span className="inline-block w-0.5 h-[1em] bg-neutral-400 dark:bg-neutral-500 ml-0.5 align-[-0.1em] animate-cursor-blink" />
-    </>
   );
 }
 
@@ -276,7 +222,7 @@ export function HeroSection() {
               </motion.div>
             </motion.div>
 
-            {/* ── Right column: prompt card ── */}
+            {/* ── Right column: Build flow ── */}
             <motion.div
               initial={{ opacity: 0, x: 24, y: 16 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
@@ -287,74 +233,7 @@ export function HeroSection() {
               }}
               className="relative w-full"
             >
-              <div className="absolute -inset-6 rounded-3xl bg-neutral-300/40 dark:bg-neutral-600/15 blur-3xl" />
-
-              <div className="relative rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-white/90 dark:bg-neutral-950/85 backdrop-blur-2xl shadow-2xl shadow-neutral-900/10 dark:shadow-black/50 overflow-hidden">
-                {/* Window chrome */}
-                <div className="flex items-center gap-3 px-4 py-3 border-b border-neutral-100 dark:border-neutral-800/80 bg-neutral-50/60 dark:bg-neutral-900/60">
-                  <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-neutral-300 dark:bg-neutral-700" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-neutral-300 dark:bg-neutral-700" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-neutral-300 dark:bg-neutral-700" />
-                  </div>
-                  <div className="flex-1 flex justify-center">
-                    <div className="flex items-center gap-1.5 rounded-full bg-neutral-100 dark:bg-neutral-800/70 px-3 py-1">
-                      <div className="w-1.5 h-1.5 rounded-full bg-neutral-400 dark:bg-neutral-600" />
-                      <span className="text-[10px] font-mono text-neutral-500 dark:text-neutral-500">
-                        craft.fast
-                      </span>
-                    </div>
-                  </div>
-                  <div className="w-14" />
-                </div>
-
-                {/* Prompt area */}
-                <div className="px-5 pt-6 pb-5">
-                  <p className="text-[10px] font-semibold text-neutral-400 dark:text-neutral-600 uppercase tracking-widest mb-3">
-                    What do you want to build?
-                  </p>
-                  <p className="text-sm sm:text-base font-mono text-neutral-700 dark:text-neutral-300 leading-relaxed min-h-12">
-                    <PromptTyper />
-                  </p>
-                </div>
-
-                {/* Feature pills */}
-                <div className="px-5 pb-5 flex flex-wrap gap-2">
-                  {[
-                    "Full-stack app",
-                    "Live sandbox",
-                    "Real database",
-                    "Zero setup",
-                  ].map((tag) => (
-                    <span
-                      key={tag}
-                      className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-neutral-100 dark:bg-neutral-800/80 text-neutral-500 dark:text-neutral-400 border border-neutral-200/80 dark:border-neutral-700/60"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="h-px mx-5 bg-neutral-100 dark:bg-neutral-800/80" />
-
-                {/* Action row */}
-                <div className="flex items-center justify-between px-5 py-4">
-                  <a
-                    href={`${ACCOUNTS_URL}/signup`}
-                    className="group inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 rounded-full hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 shadow-lg shadow-neutral-900/15"
-                  >
-                    Start Building
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                  </a>
-                  <button
-                    onClick={() => setVideoOpen(true)}
-                    className="inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium text-neutral-500 dark:text-neutral-400 hover:text-foreground rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200"
-                  >
-                    <Play className="w-3.5 h-3.5" />
-                    Watch demo
-                  </button>
-                </div>
-              </div>
+              <AnimatedBuildFlow />
             </motion.div>
           </div>
         </div>
