@@ -16,6 +16,8 @@ export const LINKS = {
     DISCORD: "https://discord.gg/YvPKxcCV",
     LINKEDIN: "https://linkedin.com/company/craftdotfast",
     YOUTUBE: "https://www.youtube.com/channel/UCImqQGc8t8t0koAsw7pscnQ",
+    CAL_URL: "https://cal.com/craftfast/debug-with-sudheer",
+    SUDHEER_WEBSITE: "https://sudheer.ai?utm_source=craft.fast&utm_medium=referral",
 } as const;
 
 export const EMAILS = {

@@ -16,8 +16,6 @@ import { LogoSymbol, LogoExtended } from "@/components/Logo";
 import { ExternalLink, User, LogOut, Github } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const CAL_URL = "https://cal.com/craftfast/debug-with-sudheer";
-
 const navLinks = [
   { label: "About", href: "/about" },
   { label: "Blog", href: BLOG_URL, external: true },
@@ -119,7 +117,7 @@ export function Header() {
             {/* Right side */}
             <div className="flex items-center gap-0.5 ml-auto pr-1">
               <a
-                href={CAL_URL}
+                href={LINKS.SUDHEER_WEBSITE}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden lg:inline-flex items-center gap-1 text-sm text-neutral-500 dark:text-neutral-400 hover:text-foreground transition-colors px-3 py-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800"
@@ -303,7 +301,7 @@ export function Header() {
                   );
                 })}
                 <a
-                  href={CAL_URL}
+                  href={LINKS.SUDHEER_WEBSITE}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 px-3 py-2.5 text-sm text-neutral-600 dark:text-neutral-400 hover:text-foreground hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-xl transition-colors"
