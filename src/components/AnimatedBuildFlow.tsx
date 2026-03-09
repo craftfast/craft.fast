@@ -23,7 +23,6 @@ import {
 
 const STEPS = [
   { id: "prompt", label: "Prompt" },
-  { id: "generate", label: "Build" },
   { id: "preview", label: "Preview" },
   { id: "publish", label: "Publish" },
 ] as const;
@@ -91,10 +90,7 @@ export function AnimatedBuildFlow() {
         setPromptText("");
         await delay(300);
 
-        // Build step
-        if (isCancelled) return;
-        setCurrentStep(1);
-
+        // Build (stays on Prompt step)
         for (let i = 0; i < AI_RESPONSES.length; i++) {
           if (isCancelled) return;
           setChatMessages((prev) => [
@@ -114,12 +110,12 @@ export function AnimatedBuildFlow() {
 
         // Preview step
         if (isCancelled) return;
-        setCurrentStep(2);
+        setCurrentStep(1);
         await delay(3000);
 
         // Publish step
         if (isCancelled) return;
-        setCurrentStep(3);
+        setCurrentStep(2);
         await delay(3500);
       }
     };
@@ -131,12 +127,12 @@ export function AnimatedBuildFlow() {
   }, []);
 
   const sidebarIcons = [
-    { Icon: Eye, label: "Preview", active: currentStep >= 2 },
-    { Icon: Code2, label: "Code", active: currentStep === 1 },
+    { Icon: Eye, label: "Preview", active: currentStep >= 1 },
+    { Icon: Code2, label: "Code", active: currentStep === 0 },
     { Icon: Database, label: "Database", active: false },
     { Icon: HardDrive, label: "Storage", active: false },
     { Icon: GitBranch, label: "Git", active: false },
-    { Icon: Rocket, label: "Deploy", active: currentStep === 3 },
+    { Icon: Rocket, label: "Deploy", active: currentStep === 2 },
     { Icon: Settings, label: "Settings", active: false },
   ];
 
@@ -164,7 +160,7 @@ export function AnimatedBuildFlow() {
           </div>
           <div className="flex items-center gap-2">
             <AnimatePresence>
-              {currentStep === 3 && (
+              {currentStep === 2 && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8, width: 0 }}
                   animate={{ opacity: 1, scale: 1, width: "auto" }}
@@ -229,7 +225,7 @@ export function AnimatedBuildFlow() {
               </AnimatePresence>
 
               <AnimatePresence>
-                {currentStep >= 1 && generatedFiles > 0 && (
+                {generatedFiles > 0 && (
                   <motion.div
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -286,7 +282,7 @@ export function AnimatedBuildFlow() {
           {/* Right content panel */}
           <div className="flex-1 flex flex-col bg-neutral-50/50 dark:bg-neutral-900/30 overflow-hidden">
             <AnimatePresence mode="wait">
-              {currentStep <= 1 && (
+              {currentStep === 0 && (
                 <motion.div
                   key="code-view"
                   initial={{ opacity: 0 }}
@@ -309,13 +305,13 @@ export function AnimatedBuildFlow() {
                         <motion.div
                           key={item.name}
                           initial={
-                            currentStep === 1
+                            currentStep === 0
                               ? { opacity: 0, x: -5 }
                               : { opacity: 1 }
                           }
                           animate={{ opacity: 1, x: 0 }}
                           transition={{
-                            delay: currentStep === 1 ? i * 0.06 : 0,
+                            delay: currentStep === 0 ? i * 0.06 : 0,
                           }}
                           className={`flex items-center gap-1 py-0.5 rounded text-[9px] ${
                             item.active
@@ -338,7 +334,7 @@ export function AnimatedBuildFlow() {
 
                     <div className="flex-1 p-2 font-mono text-[8px] leading-[1.6] text-neutral-500 dark:text-neutral-500 overflow-hidden">
                       <AnimatePresence mode="wait">
-                        {currentStep <= 1 && (
+                        {currentStep === 0 && (
                           <motion.div
                             key="code-lines"
                             initial={{ opacity: 0 }}
@@ -392,7 +388,7 @@ export function AnimatedBuildFlow() {
                     <p className="text-[8px] font-mono text-neutral-500 mb-0.5">
                       $ pnpm dev
                     </p>
-                    {currentStep === 1 && (
+                    {currentStep === 0 && generatedFiles > 0 && (
                       <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -406,7 +402,7 @@ export function AnimatedBuildFlow() {
                 </motion.div>
               )}
 
-              {currentStep === 2 && (
+              {currentStep === 1 && (
                 <motion.div
                   key="preview-view"
                   initial={{ opacity: 0, x: 10 }}
@@ -466,18 +462,14 @@ export function AnimatedBuildFlow() {
                         />
                       </KanbanColumn>
                       <KanbanColumn title="Done" count={1}>
-                        <KanbanCard
-                          color="bg-emerald-400"
-                          width="w-2/3"
-                          done
-                        />
+                        <KanbanCard color="bg-emerald-400" width="w-2/3" done />
                       </KanbanColumn>
                     </div>
                   </div>
                 </motion.div>
               )}
 
-              {currentStep === 3 && (
+              {currentStep === 2 && (
                 <motion.div
                   key="publish-view"
                   initial={{ opacity: 0, scale: 0.98 }}
@@ -534,51 +526,42 @@ export function AnimatedBuildFlow() {
 
         {/* Step indicator bar */}
         <div className="border-t border-neutral-100 dark:border-neutral-800/80 bg-neutral-50/80 dark:bg-neutral-900/60 px-4 py-2.5">
-          <div className="flex items-center justify-between gap-1">
+          <div className="flex items-center">
             {STEPS.map((s, i) => {
               const isActive = i === currentStep;
               const isPast = i < currentStep;
               return (
-                <div
-                  key={s.id}
-                  className="flex items-center gap-3 flex-1"
-                >
-                  <div className="flex items-center gap-1.5">
+                <div key={s.id} className="contents">
+                  <div className="flex items-center gap-1.5 shrink-0">
                     <div
-                      className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-bold transition-all duration-400 ${
+                      className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-bold transition-all duration-500 ${
                         isActive
-                          ? "bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 shadow-sm"
+                          ? "bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 shadow-sm scale-110"
                           : isPast
                             ? "bg-neutral-300 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-400"
                             : "bg-neutral-100 dark:bg-neutral-900 text-neutral-400 dark:text-neutral-600"
                       }`}
                     >
-                      {isPast ? (
-                        <CheckCircle2 className="w-3 h-3" />
-                      ) : (
-                        i + 1
-                      )}
+                      {isPast ? <CheckCircle2 className="w-3 h-3" /> : i + 1}
                     </div>
                     <span
-                      className={`text-[9px] font-semibold uppercase tracking-wider transition-colors duration-400 hidden sm:inline ${
+                      className={`text-[10px] font-semibold uppercase tracking-wider transition-colors duration-500 ${
                         isActive
                           ? "text-neutral-800 dark:text-neutral-200"
-                          : "text-neutral-400 dark:text-neutral-600"
+                          : isPast
+                            ? "text-neutral-500 dark:text-neutral-500"
+                            : "text-neutral-400 dark:text-neutral-600"
                       }`}
                     >
                       {s.label}
                     </span>
                   </div>
                   {i < STEPS.length - 1 && (
-                    <div className="flex-1 h-px bg-neutral-200 dark:bg-neutral-800">
+                    <div className="flex-1 mx-3 h-px bg-neutral-200 dark:bg-neutral-800 overflow-hidden">
                       <div
-                        className="h-full bg-neutral-900 dark:bg-neutral-100 transition-all duration-500 ease-in-out"
+                        className="h-full bg-neutral-900 dark:bg-neutral-100 transition-all duration-700 ease-in-out"
                         style={{
-                          width: isPast
-                            ? "100%"
-                            : isActive
-                              ? "50%"
-                              : "0%",
+                          width: isPast ? "100%" : isActive ? "50%" : "0%",
                         }}
                       />
                     </div>

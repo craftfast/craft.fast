@@ -8,7 +8,7 @@ import { AnimatedBuildFlow } from "./AnimatedBuildFlow";
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden pt-20 pb-16 sm:pt-24 sm:pb-20 lg:h-svh lg:flex lg:items-center lg:pb-0">
+    <section className="relative overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20 lg:h-svh lg:flex lg:items-center lg:pb-0">
       {/* ── Background ── */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,oklch(0_0_0/0.05)_1px,transparent_1px),linear-gradient(to_bottom,oklch(0_0_0/0.05)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,oklch(1_0_0/0.04)_1px,transparent_1px),linear-gradient(to_bottom,oklch(1_0_0/0.04)_1px,transparent_1px)] bg-size-[64px_64px]" />
@@ -29,13 +29,13 @@ export function HeroSection() {
               delay: 0.1,
               ease: [0.23, 1, 0.32, 1],
             }}
-            className="flex flex-col items-start"
+            className="flex flex-col items-center text-center sm:items-start sm:text-left"
           >
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.08 }}
-              className="mb-6"
+              className="mb-6 flex justify-center sm:justify-start"
             >
               <a
                 href={`https://vercel.com/new/clone?repository-url=${encodeURIComponent(LINKS.GITHUB_REPO)}`}
@@ -81,7 +81,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.42 }}
-              className="flex flex-wrap items-center gap-3 mb-10"
+              className="flex flex-wrap items-center justify-center sm:justify-start gap-3 mb-10"
             >
               <a
                 href={`${ACCOUNTS_URL}/signup`}
@@ -105,7 +105,7 @@ export function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-wrap items-center gap-5"
+              className="flex flex-wrap items-center justify-center sm:justify-start gap-5"
             >
               <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-neutral-400 dark:text-neutral-600 shrink-0">
                 Powered by

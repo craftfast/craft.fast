@@ -279,7 +279,7 @@ export function Header() {
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
-              className="md:hidden overflow-hidden border-t border-neutral-100 dark:border-neutral-800/60"
+              className="md:hidden overflow-hidden border-t border-neutral-100 dark:border-neutral-800/60 bg-background/95 backdrop-blur-xl"
             >
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 space-y-0.5">
                 {navLinks.map((link) => {
