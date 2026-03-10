@@ -16,6 +16,11 @@ const CREDIT_OPTIONS = [
 ];
 const TOP_UP_PLATFORM_FEE_PERCENT = 10;
 
+const PROJECT_SLOT_OPTIONS = [
+  1, 2, 3, 5, 10, 20, 30, 50, 75, 100, 150, 200, 300, 500, 750, 1000, 2000,
+  3000, 5000, 10000,
+];
+
 interface Plan {
   name: string;
   id: string;
@@ -281,6 +286,20 @@ export function PricingContent({
           </p>
         </div>
         <CreditTopUpSlider appUrl={appUrl} />
+      </section>
+
+      {/* Additional Projects Add-on */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl font-bold text-foreground mb-3">
+            Additional Projects
+          </h2>
+          <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+            Need more than your plan&apos;s project limit? Add extra slots for
+            $1/project/month, charged directly from your credits balance.
+          </p>
+        </div>
+        <ProjectSlotsSlider appUrl={appUrl} />
       </section>
 
       {/* AI Model Pricing Table */}
@@ -1271,6 +1290,97 @@ function CreditTopUpSlider({ appUrl }: { appUrl: string }) {
         Top-up credits are valid for the duration of your current billing period
         and expire on renewal. Monthly plans renew every month; annual plans
         renew yearly, on billing date.
+      </p>
+    </div>
+  );
+}
+
+function ProjectSlotsSlider({ appUrl }: { appUrl: string }) {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const slots = PROJECT_SLOT_OPTIONS[selectedIndex];
+  const total = slots * 1;
+  const pct = (selectedIndex / (PROJECT_SLOT_OPTIONS.length - 1)) * 100;
+
+  return (
+    <div className="w-full max-w-6xl mx-auto">
+      <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-2xl p-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          {/* Left — slider */}
+          <div className="flex flex-col gap-6">
+            <div>
+              <div className="text-6xl font-bold text-foreground leading-none">
+                {slots.toLocaleString()}
+              </div>
+              <div className="text-sm text-neutral-500 mt-1">
+                extra project slot{slots !== 1 ? "s" : ""}
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <div className="flex justify-between text-xs text-neutral-400 font-medium">
+                <span>1 slot</span>
+                <span>10,000 slots</span>
+              </div>
+              <input
+                type="range"
+                min={0}
+                max={PROJECT_SLOT_OPTIONS.length - 1}
+                step={1}
+                value={selectedIndex}
+                onChange={(e) => setSelectedIndex(Number(e.target.value))}
+                style={
+                  {
+                    WebkitAppearance: "none",
+                    appearance: "none",
+                    width: "100%",
+                    height: "6px",
+                    borderRadius: "9999px",
+                    background: `linear-gradient(to right, var(--slider-filled) ${pct}%, var(--slider-empty) ${pct}%)`,
+                    outline: "none",
+                    cursor: "pointer",
+                    "--slider-filled": "#171717",
+                    "--slider-empty": "#e5e5e5",
+                  } as React.CSSProperties
+                }
+              />
+            </div>
+          </div>
+
+          {/* Right — breakdown */}
+          <div className="bg-neutral-50 dark:bg-neutral-800/50 rounded-xl p-6 border border-neutral-200 dark:border-neutral-700">
+            <div className="space-y-3">
+              <div className="flex justify-between text-sm">
+                <span className="text-neutral-500">Project slots</span>
+                <span className="font-medium text-foreground">
+                  {slots.toLocaleString()}
+                </span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-neutral-500">Unit price</span>
+                <span className="font-medium text-foreground">
+                  $1/mo per slot
+                </span>
+              </div>
+              <div className="border-t border-neutral-200 dark:border-neutral-700 pt-3 flex justify-between items-baseline">
+                <span className="font-semibold text-foreground">Total</span>
+                <span className="text-xl font-bold text-foreground">
+                  ${total.toLocaleString()}/mo
+                </span>
+              </div>
+            </div>
+            <Link
+              href={`${appUrl}/settings?tab=billing`}
+              className="w-full block mt-5 px-6 py-3 bg-foreground text-background hover:bg-neutral-800 dark:hover:bg-neutral-200 rounded-full font-medium transition-colors text-center text-sm"
+            >
+              Add Project Slots
+            </Link>
+          </div>
+        </div>
+      </div>
+      <p className="mt-3 text-xs text-neutral-400 dark:text-neutral-500 text-center">
+        Charged from your credits balance. First charge is prorated to your
+        current billing cycle. Slots renew with your subscription.
       </p>
     </div>
   );

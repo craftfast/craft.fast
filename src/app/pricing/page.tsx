@@ -173,6 +173,18 @@ const faqs = [
     a: "Yes, you can cancel your subscription at any time from your dashboard. Your plan remains active until the end of the current billing period.",
   },
   {
+    q: "What are additional project slots?",
+    a: "Each plan includes a set number of active projects. If you need more, you can purchase extra slots at $1/project/month from your available credits balance. You can buy as few as 1 or as many as 10,000 slots. They stack on top of your plan's included limit.",
+  },
+  {
+    q: "How is the first charge for project slots calculated?",
+    a: "The first charge is prorated based on how many days remain in your current billing cycle, so you only pay for the time you use. After that, the full $1/project/month is deducted from your credits balance on each renewal.",
+  },
+  {
+    q: "Can I remove additional project slots later?",
+    a: "You can manage your slot count from the Billing settings in your dashboard. The recurring cost is deducted from your credits balance each billing cycle.",
+  },
+  {
     q: "How do I track my usage?",
     a: "Go to Dashboard → Settings → Billing to see a detailed breakdown of your AI, sandbox, database, and deployment costs.",
   },
