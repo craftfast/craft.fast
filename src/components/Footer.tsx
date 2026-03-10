@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LINKS, EMAILS, APP_URL, DOCS_URL, BLOG_URL } from "@/lib/constants";
+import { LINKS, EMAILS, APP_URL } from "@/lib/constants";
 import { LogoSymbol } from "@/components/Logo";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
@@ -45,20 +45,20 @@ export function Footer() {
             </h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <a
-                  href={DOCS_URL}
+                <Link
+                  href="/docs"
                   className="text-neutral-500 hover:text-foreground transition-colors"
                 >
                   Documentation
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href={BLOG_URL}
+                <Link
+                  href="/blog"
                   className="text-neutral-500 hover:text-foreground transition-colors"
                 >
                   Blog
-                </a>
+                </Link>
               </li>
               <li>
                 <Link
