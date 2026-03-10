@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { LINKS, EMAILS, APP_URL } from "@/lib/constants";
+import { LINKS, APP_URL } from "@/lib/constants";
 import { LogoSymbol } from "@/components/Logo";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function Footer() {
   return (
     <footer className="border-t border-border bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
           <div>
             <h3 className="text-sm font-semibold text-foreground mb-4">
               Product

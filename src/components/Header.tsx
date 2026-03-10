@@ -73,7 +73,7 @@ export function Header() {
             : "bg-transparent border-b border-transparent",
         )}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative flex items-center h-14 sm:h-16">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 shrink-0">
