@@ -60,7 +60,10 @@ export function Header() {
             <nav className="hidden md:flex items-center gap-0.5 absolute left-1/2 -translate-x-1/2">
               {navLinks.map((link) => {
                 const isExternal = "external" in link && link.external;
-                const isActive = !isExternal && pathname === link.href;
+                const isActive =
+                  !isExternal &&
+                  (pathname === link.href ||
+                    (link.href !== "/" && pathname.startsWith(link.href)));
                 const Component = isExternal ? "a" : Link;
                 const extraProps = isExternal
                   ? { target: "_blank", rel: "noopener noreferrer" }
