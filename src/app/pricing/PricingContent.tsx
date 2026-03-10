@@ -222,20 +222,6 @@ export function PricingContent({
             );
           })}
         </div>
-
-        {/* Additional credits info */}
-        <div className="mt-6 text-center">
-          <p className="text-sm text-neutral-500">
-            Need more credits? You can{" "}
-            <Link
-              href={`${appUrl}/settings/billing`}
-              className="underline hover:text-foreground transition-colors"
-            >
-              top up anytime
-            </Link>
-            .
-          </p>
-        </div>
       </section>
 
       {/* Enterprise */}
@@ -247,8 +233,7 @@ export function PricingContent({
                 Enterprise
               </h2>
               <p className="text-neutral-600 dark:text-neutral-400 mb-6">
-                Custom plans for large teams and organizations. Get dedicated
-                infrastructure, premium support, and advanced security features.
+                For teams and organizations with compliance needs.
               </p>
               <a
                 href={`mailto:${enterpriseEmail}`}
@@ -257,7 +242,7 @@ export function PricingContent({
                 Contact Sales
               </a>
             </div>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {enterpriseFeatures.map((feature) => (
                 <li
                   key={feature}

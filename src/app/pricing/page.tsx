@@ -85,14 +85,14 @@ const plans = [
 ];
 
 const enterpriseFeatures = [
-  "Everything in Max",
-  "Unlimited sandboxes",
-  "Private model routing / BYO keys",
+  "Unlimited projects",
+  "Custom sandboxes",
+  "Private models / BYO keys",
   "SSO & SAML",
   "Audit log & compliance",
-  "Custom domain & branding",
+  "Custom domain",
   "SLA guarantee",
-  "Dedicated account manager",
+  "Dedicated technical support",
 ];
 
 // Fetch AI models from the app's public API for the pricing page
