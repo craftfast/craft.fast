@@ -10,13 +10,13 @@ const steps = [
   },
   {
     number: "02",
-    title: "Build",
+    title: "Preview",
     description:
-      "Craft writes code, installs dependencies, runs migrations, and starts the dev server in a cloud sandbox.",
+      "Craft writes code and starts the dev server in a cloud sandbox to preview.",
   },
   {
     number: "03",
-    title: "Iterate & Ship",
+    title: "Publish",
     description:
       "Talk to the running app, point out issues, and deploy when it's ready.",
   },
