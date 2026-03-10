@@ -1,13 +1,15 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Monitor, Moon, Sun } from "lucide-react";
 
 export function ThemeToggle() {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
+  const [showAbove, setShowAbove] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     requestAnimationFrame(() => setMounted(true));
@@ -26,6 +28,21 @@ export function ThemeToggle() {
     return () => document.removeEventListener("mousedown", handler);
   }, [open]);
 
+  const handleToggle = () => {
+    if (!open && containerRef.current) {
+      const container = containerRef.current.getBoundingClientRect();
+      const spaceBelow = window.innerHeight - container.bottom;
+      const spaceAbove = container.top;
+      const dropdownHeight = 120; // approximate height of 3 options
+      const threshold = 20;
+      setShowAbove(
+        spaceBelow < dropdownHeight + threshold &&
+          spaceAbove > dropdownHeight + threshold,
+      );
+    }
+    setOpen((prev) => !prev);
+  };
+
   if (!mounted) {
     return (
       <div className="w-8 h-8 rounded-full bg-neutral-200 dark:bg-neutral-800 animate-pulse" />
@@ -39,9 +56,9 @@ export function ThemeToggle() {
   ] as const;
 
   return (
-    <div className="relative" data-theme-toggle>
+    <div className="relative" data-theme-toggle ref={containerRef}>
       <button
-        onClick={() => setOpen(!open)}
+        onClick={handleToggle}
         className="p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
         aria-label="Toggle theme"
         title={`Theme: ${theme}`}
@@ -54,7 +71,11 @@ export function ThemeToggle() {
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-1 w-36 bg-white dark:bg-neutral-900 rounded-xl shadow-lg border border-neutral-200 dark:border-neutral-800 z-50 py-1">
+        <div
+          className={`absolute right-0 w-36 bg-white dark:bg-neutral-900 rounded-xl shadow-lg border border-neutral-200 dark:border-neutral-800 z-50 py-1 transition-all ${
+            showAbove ? "bottom-full mb-1" : "top-full mt-1"
+          }`}
+        >
           {options.map(({ value, label, icon: Icon }) => (
             <button
               key={value}
