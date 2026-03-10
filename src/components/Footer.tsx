@@ -18,7 +18,7 @@ export function Footer() {
                   href={APP_URL}
                   className="text-neutral-500 hover:text-foreground transition-colors"
                 >
-                  Open Craft
+                  Go to App
                 </a>
               </li>
               <li>

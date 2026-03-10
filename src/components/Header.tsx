@@ -130,7 +130,7 @@ export function Header() {
               {mounted && !isPending && isLoggedIn && user ? (
                 <a
                   href={APP_URL}
-                  className="inline-flex items-center px-4 py-1.5 text-sm font-semibold bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 rounded-full hover:opacity-90 transition-opacity"
+                  className="inline-flex items-center px-4 py-1.5 mx-1.5 text-sm font-semibold bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 rounded-full hover:opacity-90 transition-opacity"
                 >
                   Go to App
                 </a>
