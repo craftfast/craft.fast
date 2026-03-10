@@ -43,7 +43,7 @@ export function Header() {
       <header
         className={cn(
           "fixed inset-x-0 top-0 z-40 transition-all duration-300",
-          scrolled
+          scrolled || pathname !== "/"
             ? "bg-background/90 dark:bg-background/95 backdrop-blur-xl border-b border-neutral-200/60 dark:border-neutral-800/60"
             : "bg-transparent border-b border-transparent",
         )}

@@ -22,7 +22,7 @@ export default function DocsLayout({
     return (
       <div className="min-h-screen bg-background text-foreground flex flex-col">
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pt-14 sm:pt-16">{children}</main>
         <Footer />
       </div>
     );
@@ -33,9 +33,9 @@ export default function DocsLayout({
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Header />
 
-      <div className="flex-1 flex">
+      <div className="flex-1 flex pt-14 sm:pt-16">
         {/* Left Sidebar - Desktop */}
-        <aside className="hidden lg:flex lg:flex-col w-60 shrink-0 overflow-y-auto scrollbar-thin border-r border-border bg-background sticky top-12 h-[calc(100vh-48px)]">
+        <aside className="hidden lg:flex lg:flex-col w-60 shrink-0 overflow-y-auto scrollbar-thin border-r border-border bg-background sticky top-16 h-[calc(100vh-64px)]">
           <div className="p-4">
             <DocsSidebar />
           </div>
@@ -45,7 +45,7 @@ export default function DocsLayout({
         <main className="flex-1 min-w-0">{children}</main>
 
         {/* Right Sidebar - Table of Contents */}
-        <aside className="hidden xl:flex xl:flex-col w-60 shrink-0 overflow-y-auto scrollbar-thin bg-background sticky top-12 h-[calc(100vh-48px)]">
+        <aside className="hidden xl:flex xl:flex-col w-60 shrink-0 overflow-y-auto scrollbar-thin bg-background sticky top-16 h-[calc(100vh-64px)]">
           <div className="p-4">
             <TableOfContents />
           </div>
