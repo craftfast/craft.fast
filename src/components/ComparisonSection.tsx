@@ -114,8 +114,7 @@ export function ComparisonSection() {
           </h2>
           <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto px-2">
             Other tools hide costs and lock you in. Craft is transparent,
-            full-stack, and built to give you real infrastructure - not toy
-            sandboxes.
+            full-stack, and built to give you real infrastructure.
           </p>
         </motion.div>
 
